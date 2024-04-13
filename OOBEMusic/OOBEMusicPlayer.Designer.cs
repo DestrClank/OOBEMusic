@@ -1,6 +1,6 @@
 ﻿namespace OOBEMusic
 {
-    partial class Service1
+    partial class OOBEMusicPlayer
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

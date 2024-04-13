@@ -5,7 +5,7 @@ using OOBEMusic;
 
 public class Logging
 {
-    public readonly ILogger<Service1> _logger; // Ajoutez un champ pour le logger
+    public readonly ILogger<OOBEMusicPlayer> _logger; // Ajoutez un champ pour le logger
     public void Info (string message)
     {
         _logger.LogInformation(message);

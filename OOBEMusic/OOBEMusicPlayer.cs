@@ -16,11 +16,11 @@ using Microsoft.Win32;
 
 namespace OOBEMusic
 {
-    public partial class Service1 : ServiceBase, IHostedService
+    public partial class OOBEMusicPlayer : ServiceBase, IHostedService
     {
-        private readonly ILogger<Service1> _logger; // Ajoutez un champ pour le logger
+        private readonly ILogger<OOBEMusicPlayer> _logger; // Ajoutez un champ pour le logger
 
-        public Service1(ILogger<Service1> logger) // Injectez le logger dans le constructeur
+        public OOBEMusicPlayer(ILogger<OOBEMusicPlayer> logger) // Injectez le logger dans le constructeur
         {
             InitializeComponent();
             _logger = logger;

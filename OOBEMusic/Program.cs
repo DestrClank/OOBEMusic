@@ -16,7 +16,7 @@ namespace OOBEMusic
         {
             var loggerFactory = LoggerFactory.Create(builder => builder.AddEventLog());
 
-            var service = new Service1(loggerFactory.CreateLogger<Service1>());
+            var service = new OOBEMusicPlayer(loggerFactory.CreateLogger<OOBEMusicPlayer>());
 
             ServiceBase.Run(service); // Lancement du service
 
