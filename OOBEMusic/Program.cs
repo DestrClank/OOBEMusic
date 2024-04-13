@@ -18,7 +18,7 @@ namespace OOBEMusic
 
             var service = new Service1(loggerFactory.CreateLogger<Service1>());
 
-            ServiceBase.Run(service);
+            ServiceBase.Run(service); // Lancement du service
 
         }
     }
