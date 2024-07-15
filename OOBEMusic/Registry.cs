@@ -42,9 +42,6 @@ namespace OOBEMusic
                 }
                 else
                 {
-                    // La clé existe déjà, vous pouvez choisir de ne pas écraser la valeur existante ici
-                    // Ou bien vous pouvez mettre à jour la valeur existante si vous le souhaitez
-                    // Dans cet exemple, nous écrasons simplement la valeur existante
                     string value = (string)key.GetValue("MusicFile");
                     logger.LogInformation($"La clé a déja été crée (emplacement) : {value}");
                 }
@@ -59,13 +56,59 @@ namespace OOBEMusic
                 if (key == null)
                 {
                     string appPath = AppDomain.CurrentDomain.BaseDirectory;
-                    value = appPath + "music.wav";
+                    string musicPath = appPath + "music.wav";
+                    return musicPath;
                 } else
                 {
                     value = (string)key.GetValue(name);
+                    key.Close();
+                    key.Dispose();
                 }
             }
             return value;
         }
+
+        public static int CheckActivationState(string name, ILogger logger, int defaultvalue = 1)
+        {
+            int Active = defaultvalue;
+            
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, false))
+            {
+                if (key == null)
+                {
+                    logger.LogWarning("La clé n'existe pas, impossible de vérifier l'état d'activation, par défaut le programme sera activé.");
+                    return Active;
+                }
+                else
+                {
+                    try
+                    {
+                        if (key.GetValue(name) != null)
+                        {
+                            Active = Convert.ToInt32(key.GetValue(name));
+                        } else
+                        {
+                            if (defaultvalue == 1)
+                            {
+                                logger.LogWarning($"La valeur {name} n'existe pas, le programme activera par défaut.");
+                            } else
+                            {
+                                logger.LogWarning($"La valeur {name} n'existe pas.");
+                            }     
+                        }
+                        
+                    } catch (Exception ex)
+                    {
+                        logger.LogError($"Le type de la valeur {name} n'est pas une valeur convertissable en Integer.\n Code d'erreur : {ex.Message}");
+                    } finally
+                    {
+                        key.Close();
+                        key.Dispose();
+                    }       
+                } 
+                logger.LogInformation($"Etat d'activation ({name}): {Active}");
+                return Active;
+            }
+        } 
     }
 }
