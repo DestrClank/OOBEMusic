@@ -93,3 +93,8 @@ For these keys, you have to make them into `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432N
 
 ### Disable the service with registry
 You can use these 2 keys described earlier and set them as `0` to completely disable the service. In this case, the service will automatically close, freeing some RAM in the process.
+
+# More details
+Uses .NET Framework 4.8.
+
+The program saves execution logs into the Event Viewer, and they are translated in French for now, I plan to translate them into English.
