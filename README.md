@@ -47,7 +47,7 @@ You can change the default music that plays when the OOBE starts. But there is r
 
 To change the music you have 2 ways :
 - Note : you have to do this into the audit mode **BEFORE** completing the OOBE phase !
-### Via Registry Editor
+## Via Registry Editor
 1. When you first execute the service, the program makes an entry into the registry at
    - `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile`
 2. Use the `Windows + R` and type `regedit.exe` into the Run box.
@@ -61,34 +61,34 @@ To change the music you have 2 ways :
 8. Do the steps for step 9 in the installation's guide to reboot into OOBE.
    - Note : Now, the service will play without restarting the new file you specified into the registry key.
    - **WARNING** : If you already passed the OOBE phase, **don't do this** ! Sysprep will **RESET YOUR PC AND DELETE ALL YOUR FILES** !!
-### Replace the defaut music file
-# Before 1.0.2
+## Replace the defaut music file
+### Before 1.0.2
 1. Rename your .wav file to `music.wav`.
 2. Into the root of your C: drive, you should find an OOBEMusic folder.
 3. Put your music.wav file into OOBEMusic folder, Windows Explorer will tell you to replace the file or to make a copy, select "Replace".
 
-# After 1.0.2
+### After 1.0.2
 1. Locate where the OOBE Music Player program is installed on your computer. Usally it's in `C:\Program Files (x86)\DestrClank Studios\OOBE Music Player\`
 2. Rename your .wav file to `music.wav`.
 3. Put your music.wav file into the folder, Windows Explorer will tell you to replace the file or to make a copy, select "Replace" and accept the administrative privileges.
 
-## How it works
+# How it works
 The program analyses if one of these three processes are running to determine when to play the music.
 - WWAHost.exe : the program responsible for the OOBE user interface.
 - FirstLogonAnim.exe : after you completed the setup phase, your computer will show an animation, this program is responsible for it.
 - OOBEShellHost.exe : A middle program responsible of certain parts of the OOBE, especially for the restore OneDrive backup screen.
 
-## Side effects
+# Side effects
 1. When you create a new user, the window that prompts you to put your credentials of your Microsoft account plays the music because WWAHost.exe is used here for this interface.
    - Sometimes, WWAHost can still be running even if the window is closed, use Task Manager and kill WWAHost.exe and the music should stop.
    - Note : now the service checks if the process is in "Suspended" mode. If it is suspended, the music should not play. But if you want to maximize your performance, try the solution above.
 2. When a new user logs on for the first time, they will be greeted by the music playing in the background.
    - The same problem as the first side effect can occur at the end of the preparation phase when you get to the Desktop.
-   - Note : for some reason, after analysis, WWAHost.exe is not suspended after the first logon of the user. Try the solution described in point 1 of Side effects.
+   - Note : for some reason, after analysis, WWAHost.exe may not be suspended after the first logon of the user. Try the solution described in point 1 of Side effects.
 3. Any program that needs WWAHost.exe will play the music.
    - In that case, you can disable the OOBEMusic Windows Service when you have finished installing Windows.
    - New in 1.0.2 : you can uninstall "OOBE Music Player" via the Modify/Remove programs (via the Settings > Applications > Installed Applications).
-4. Any program named WWAHost.exe or FirstLogonAnim.exe will play the music.
+4. Any program named WWAHost.exe, FirstLogonAnim.exe, or OobeShellHost.exe will play the music.
 
 ## Optional registry keys
 You can use some registry keys implemented into the program alternatively to control when OOBEMusic should play the music.
