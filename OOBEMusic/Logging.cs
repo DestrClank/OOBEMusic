@@ -1,23 +1,33 @@
 ﻿using Microsoft.Extensions.Logging;
 using OOBEMusic;
+using System.Diagnostics;
+using System.Resources;
 
 public class Logging
 {
-    public readonly ILogger<OOBEMusicPlayer> _logger; // Ajoutez un champ pour le logger
-    public void Info (string message)
+    public class EventLogger
     {
-        _logger.LogInformation(message);
-    }
-    public void Warn (string message)
-    {
-        _logger.LogWarning(message);
-    }
-    public void Error (string message)
-    {
-        _logger.LogError(message);
-    }
-    public void Fatal (string message)
-    {
-        _logger.LogCritical(message);
+        private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
+        public static void LogToEventViewer(string message, EventLogEntryType type)
+        {
+            string source = "OOBEMusic";
+            string logName = "Application";
+
+            try
+            {
+                if (!EventLog.SourceExists(source))
+                {
+                    // Créer la source d'événements
+                    EventLog.CreateEventSource(new EventSourceCreationData(source, logName));
+                }
+                // Écrire dans le journal des événements
+                EventLog.WriteEntry(source, message, type);
+            }
+            catch (System.Exception ex)
+            {
+                // En cas d'erreur, écrire dans le journal par défaut
+                EventLog.WriteEntry(source, string.Format(rm.GetString("ErrorCantLogInEventViewer"), ex.Message), EventLogEntryType.Error);
+            }
+        }
     }
 }

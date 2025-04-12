@@ -6,31 +6,33 @@ using System.ServiceProcess;
 using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
+using System.Resources;
+using System.Globalization;
 
 namespace OOBEMusic
 {
     public partial class OOBEMusicPlayer : ServiceBase, IHostedService
     {
-        private readonly ILogger<OOBEMusicPlayer> _logger; // Ajoutez un champ pour le logger
+        private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
 
         static string servicename = "OOBEMusic";
 
-        static string WWAHostKeyName = "ActivateWWAHostMusic";
-        static string FirstLogonAnimKeyName = "ActivateFirstLogonMusic";
-        static string SuperVerboseLogsKeyName = "EnableSuperVerboseLogs";
-        static int SuperVerboseLogs = 0;
-
-        ServiceBase service = new ServiceBase();
-
-        public OOBEMusicPlayer(ILogger<OOBEMusicPlayer> logger) // Injectez le logger dans le constructeur
+        // Fix for CS1519, CS1001, CS0106, CS1520, IDE1007: Move culture initialization to the constructor
+        public OOBEMusicPlayer() // Injectez le logger dans le constructeur
         {
             this.ServiceName = servicename;
 
             InitializeComponent();
-            _logger = logger;
         }
+
+        static string WWAHostKeyName = "ActivateWWAHostMusic";
+        static string FirstLogonAnimKeyName = "ActivateFirstLogonMusic";
+        static string OOBEHostAppKeyName = "ActivateOOBEHostMusic";
+        static string SuperVerboseLogsKeyName = "EnableSuperVerboseLogs";
+        static int SuperVerboseLogs = 0;
+
+        ServiceBase service = new ServiceBase();
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -46,64 +48,76 @@ namespace OOBEMusic
 
         protected override void OnStart(string[] args)
         {
-            int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName, _logger);
-            int FirstLogonState = RegHelper.CheckActivationState(FirstLogonAnimKeyName, _logger);
-            SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName, _logger, 0);
+            int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
+            int FirstLogonState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
+            int OOBEHostAppState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
+            SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName, 0);
 
-            if (WWAHostState != 1 && FirstLogonState != 1)
+            if (WWAHostState != 1 && FirstLogonState != 1 && OOBEHostAppState != 1)
             {
-                _logger.LogInformation($"Les deux valeurs {WWAHostKeyName} et {FirstLogonAnimKeyName} ne sont pas réglés sur 1. Le programme va s'arrêter.");
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), WWAHostKeyName, FirstLogonAnimKeyName), EventLogEntryType.Information);
                 service.Stop();
-            } else
+            }
+            else
             {
-                Thread Hook = new Thread(() => HookIntoWWA(_logger));
+                Thread Hook = new Thread(() => HookIntoWWA());
                 Hook.Start();
             }
             string appPath = AppDomain.CurrentDomain.BaseDirectory;
             string musicPath = appPath + "music.wav";
-            RegHelper.SaveKey(musicPath, _logger);
+            RegHelper.SaveKey(musicPath);
             if (SuperVerboseLogs == 1)
             {
-                _logger.LogInformation("uiiiii ca marcheeee \nEn language sérieux : Le service OOBEMusic.exe a été lancé avec succès.");
-            } else
-            {
-                _logger.LogInformation("Le service OOBEMusic.exe a été lancé avec succès.");
+                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStartedVerbose"), EventLogEntryType.Information);
             }
+            else
+            {
+                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStarted"), EventLogEntryType.Information);
+            }
+
+            // Logique pour démarrer le service
 
         }
 
-        static void HookIntoWWA(ILogger logger)
+        static void HookIntoWWA()
         {
             bool musicPlaying = false;
             var player = new SoundPlayer();
             string musicPath;
 
-            int WWAHostActivate = RegHelper.CheckActivationState(WWAHostKeyName, logger);
-            int FirstLogonAnimActivate = RegHelper.CheckActivationState(FirstLogonAnimKeyName, logger);
+            // Check if the registry keys are set to 1
+
+            int WWAHostActivate = RegHelper.CheckActivationState(WWAHostKeyName, default, false);
+            int FirstLogonAnimActivate = RegHelper.CheckActivationState(FirstLogonAnimKeyName, default, false);
+            int OOBEShellActivate = RegHelper.CheckActivationState(OOBEHostAppKeyName, default, false);
 
             while (true)
             {
-                if (Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, logger) && !musicPlaying)
+                if (Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, OOBEShellActivate) && !musicPlaying)
                 {
-                    PlaySound(player, logger, true, out musicPlaying, out musicPath);
+                    PlaySound(player, true, out musicPlaying, out musicPath);
 
                     if (SuperVerboseLogs == 1)
                     {
-                        logger.LogInformation($"La musique a été jouée, normalement OnO.\nEn language sérieux : Le processus WWAHost.exe a été détécté et le programme lance la musique.\nEmplacement du fichier : {musicPath}");
-                    } else
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayedVerbose"), musicPath), EventLogEntryType.Information);
+                    }
+                    else
                     {
-                        logger.LogInformation($"Le processus WWAHost.exe a été détécté et le programme lance la musique.\nEmplacement du fichier : {musicPath}");
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), musicPath), EventLogEntryType.Information);
                     }
 
 
-                } else if (!Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, logger) && musicPlaying)
+                }
+                else if (!Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, OOBEShellActivate) && musicPlaying)
                 {
                     if (SuperVerboseLogs == 1)
                     {
-                        logger.LogInformation("La musique s'est arrêté, normalement c'est arrêté.\nEn language sérieux : Le processus WWAHost.exe a été fermé, la musique va s'arrêter.");
-                    } else
+                        Logging.EventLogger.LogToEventViewer(rm.GetString("MusicStoppedVerbose"), EventLogEntryType.Information);
+                    }
+                    else
                     {
-                        logger.LogInformation("Le processus WWAHost.exe a été fermé, la musique va s'arrêter.");
+                        Logging.EventLogger.LogToEventViewer(rm.GetString("MusicStopped"), EventLogEntryType.Information);
+
                     }
 
                     musicPlaying = false;
@@ -116,7 +130,7 @@ namespace OOBEMusic
 
         }
 
-        static private void PlaySound(SoundPlayer soundplayer, ILogger logger, bool musicPlaying, out bool Playing, out string musicPath)
+        static private void PlaySound(SoundPlayer soundplayer, bool musicPlaying, out bool Playing, out string musicPath)
         {
             Playing = musicPlaying;
             musicPath = RegHelper.GetValue("MusicFile");
@@ -130,21 +144,24 @@ namespace OOBEMusic
             {
                 if (SuperVerboseLogs == 1)
                 {
-                    logger.LogError($"naaaahhhh ca marche pluuu: {ex.Message} \nEn language sérieux : Une erreur est survenue dans l'application empêchant la lecture de la musique, vérifiez que le fichier est bien un fichier .wav et que l'emplacement indiqué dans le registre Windows à la clé HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\DestrClank\\OOBEMusic\\MusicFile indique un emplacement de fichier valide à cette adresse et que le fichier existe et est accessible. \nCode d'erreur : {ex.Message}");
-                } else
+                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicErrorVerbose"), ex.Message), EventLogEntryType.Error);
+                }
+                else
                 {
-                    logger.LogError($"Une erreur est survenue dans l'application empêchant la lecture de la musique, vérifiez que le fichier est bien un fichier .wav et que l'emplacement indiqué dans le registre Windows à la clé HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\DestrClank\\OOBEMusic\\MusicFile indique un emplacement de fichier valide à cette adresse et que le fichier existe et est accessible. \nCode d'erreur : {ex.Message}");
+                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicError"), ex.Message), EventLogEntryType.Error);
                 }
             }
         }
 
-        static bool Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, ILogger logger)
+        static bool Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
         {
             string wwahost = "WWAHost";
             string firstbootanim = "FirstLogonAnim";
+            string oobehost = "OobeShellHost";
 
             Process[] wwahostlist = Process.GetProcessesByName(wwahost);
             Process[] firstlogonlist = Process.GetProcessesByName(firstbootanim);
+            Process[] oobehostlist = Process.GetProcessesByName(oobehost);
 
             bool exists = false;
 
@@ -170,6 +187,16 @@ namespace OOBEMusic
                 }
 
             }
+
+            if (oobehostlist.Length > 0 && OobeShellSetting == 1)
+            {
+                bool interrupted = CheckProcesses(oobehostlist);
+                if (!interrupted)
+                {
+                    exists = true;
+                }
+            }
+
             return exists;
         }
 
@@ -192,12 +219,13 @@ namespace OOBEMusic
         {
             if (SuperVerboseLogs == 1)
             {
-                _logger.LogWarning("JE VEUX PAS MOURRRIRRRRRR NOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNNN \nEn language sérieux : Le processus a recu une demande d'arrêt du système. Le processus va s'arrêter.");
-            } else
-            {
-                _logger.LogWarning("Le processus a recu une demande d'arrêt du système. Le processus va s'arrêter.");
+                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequestVerbose"), EventLogEntryType.Information);
             }
-            
+            else
+            {
+                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequest"), EventLogEntryType.Information);
+            }
+
             service.Stop();
         }
     }
