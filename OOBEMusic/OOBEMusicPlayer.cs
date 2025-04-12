@@ -18,6 +18,12 @@ namespace OOBEMusic
 
         static string servicename = "OOBEMusic";
 
+        public bool _stopRequested = false;
+
+        private SoundPlayer player;
+
+        private Thread _HookThread = null; // Thread for hooking into WWAHost process
+
         // Fix for CS1519, CS1001, CS0106, CS1520, IDE1007: Move culture initialization to the constructor
         public OOBEMusicPlayer() // Injectez le logger dans le constructeur
         {
@@ -60,8 +66,9 @@ namespace OOBEMusic
             }
             else
             {
-                Thread Hook = new Thread(() => HookIntoWWA());
-                Hook.Start();
+                _stopRequested = false;
+                _HookThread = new Thread(() => HookIntoWWA());
+                _HookThread.Start();
             }
             string appPath = AppDomain.CurrentDomain.BaseDirectory;
             string musicPath = appPath + "music.wav";
@@ -79,19 +86,20 @@ namespace OOBEMusic
 
         }
 
-        static void HookIntoWWA()
+        void HookIntoWWA()
         {
             bool musicPlaying = false;
-            var player = new SoundPlayer();
             string musicPath;
 
             // Check if the registry keys are set to 1
+
+            player = new SoundPlayer();
 
             int WWAHostActivate = RegHelper.CheckActivationState(WWAHostKeyName, default, false);
             int FirstLogonAnimActivate = RegHelper.CheckActivationState(FirstLogonAnimKeyName, default, false);
             int OOBEShellActivate = RegHelper.CheckActivationState(OOBEHostAppKeyName, default, false);
 
-            while (true)
+            while (!_stopRequested)
             {
                 if (Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, OOBEShellActivate) && !musicPlaying)
                 {
@@ -125,7 +133,7 @@ namespace OOBEMusic
                 }
 
                 Thread.Sleep(1000);
-
+                
             }
 
         }
@@ -217,6 +225,9 @@ namespace OOBEMusic
 
         protected override void OnStop()
         {
+
+            _stopRequested = true;
+
             if (SuperVerboseLogs == 1)
             {
                 Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequestVerbose"), EventLogEntryType.Information);
@@ -226,7 +237,15 @@ namespace OOBEMusic
                 Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequest"), EventLogEntryType.Information);
             }
 
-            service.Stop();
+            if (_HookThread != null && _HookThread.IsAlive)
+            {
+                _HookThread.Join();
+            }
+
+            player?.Stop();
+            player?.Dispose();
+
+            base.OnStop();
         }
     }
 }
