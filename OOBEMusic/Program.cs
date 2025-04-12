@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Globalization;
 using System.ServiceProcess;
+using System.Threading;
 
 namespace OOBEMusic
 {
@@ -7,9 +8,7 @@ namespace OOBEMusic
     {
         public static void Main(string[] args)
         {
-            var loggerFactory = LoggerFactory.Create(builder => builder.AddEventLog());
-
-            var service = new OOBEMusicPlayer(loggerFactory.CreateLogger<OOBEMusicPlayer>());
+            var service = new OOBEMusicPlayer();
 
             ServiceBase.Run(service); // Lancement du service
 
