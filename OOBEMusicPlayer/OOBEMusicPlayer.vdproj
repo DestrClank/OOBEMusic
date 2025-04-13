@@ -1918,12 +1918,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DC9FAF37A4102D5ECBB0AB121B7843FE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2827,6 +2821,12 @@
         "OwnerKey" = "8:_7DA97BF1A4CFED1A914189C57B3987F2"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DC9FAF37A4102D5ECBB0AB121B7843FE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -2845,6 +2845,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -2861,6 +2869,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.8"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.8 (x86 et x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.8"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -7676,7 +7700,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OOBE Music Player"
         "ProductCode" = "8:{31347E8C-1731-43DD-AC3D-ACCB55749BA0}"
-        "PackageCode" = "8:{947015A4-EB10-4F58-8DFA-580FDA94E6F5}"
+        "PackageCode" = "8:{F6F454E9-3697-4B18-9E00-06197939339E}"
         "UpgradeCode" = "8:{1F2111F1-254E-4150-90F1-C02BBEC8ADD2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

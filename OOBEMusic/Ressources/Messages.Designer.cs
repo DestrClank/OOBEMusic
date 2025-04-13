@@ -187,6 +187,24 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Operation error: {0}.
+        /// </summary>
+        internal static string ServiceOperationError {
+            get {
+                return ResourceManager.GetString("ServiceOperationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Operation error: {0}.
+        /// </summary>
+        internal static string ServiceOperationError1 {
+            get {
+                return ResourceManager.GetString("ServiceOperationError1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The OOBEMusic.exe service has started successfully..
         /// </summary>
         internal static string ServiceStarted {
@@ -196,11 +214,29 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The service has been installed and started successfully..
+        /// </summary>
+        internal static string ServiceStartedUponInstall {
+            get {
+                return ResourceManager.GetString("ServiceStartedUponInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à uiiiii it works In serious language: The OOBEMusic.exe service has started successfully..
         /// </summary>
         internal static string ServiceStartedVerbose {
             get {
                 return ResourceManager.GetString("ServiceStartedVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The service didn&apos;t start properly after installation : Error code {0}.
+        /// </summary>
+        internal static string ServiceStartError {
+            get {
+                return ResourceManager.GetString("ServiceStartError", resourceCulture);
             }
         }
         
@@ -228,6 +264,33 @@ namespace OOBEMusic.Ressources {
         internal static string ServiceStopRequestVerbose {
             get {
                 return ResourceManager.GetString("ServiceStopRequestVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The service did not start in the allotted time: {0}.
+        /// </summary>
+        internal static string ServiceTimeoutError {
+            get {
+                return ResourceManager.GetString("ServiceTimeoutError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Unexpected error: {0}.
+        /// </summary>
+        internal static string ServiceUnexpectedError {
+            get {
+                return ResourceManager.GetString("ServiceUnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The service has not been uninstalled properly. Error code : {0}.
+        /// </summary>
+        internal static string ServiceUninstallError {
+            get {
+                return ResourceManager.GetString("ServiceUninstallError", resourceCulture);
             }
         }
         

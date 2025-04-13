@@ -117,70 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="KeyNotFoundMessage" xml:space="preserve">  
-   <value>La chiave non esiste, creandola.</value>  
+  <data name="KeyNotFoundMessage" xml:space="preserve">
+    <value>La chiave non esiste, creandola.</value>
   </data>
-  <data name="RegistryCreatedMessage" xml:space="preserve">  
-   <value>La chiave di registro è stata creata.</value>  
+  <data name="RegistryCreatedMessage" xml:space="preserve">
+    <value>La chiave di registro è stata creata.</value>
   </data>
-  <data name="RegistryCreationError" xml:space="preserve">  
-   <value>Si è verificato un errore durante la creazione della chiave di registro. Codice errore: {0}</value>  
+  <data name="RegistryCreationError" xml:space="preserve">
+    <value>Si è verificato un errore durante la creazione della chiave di registro. Codice errore: {0}</value>
   </data>
-  <data name="KeyAlreadyExistsMessage" xml:space="preserve">  
-   <value>La chiave esiste già (posizione del file musicale): {0}</value>  
+  <data name="KeyAlreadyExistsMessage" xml:space="preserve">
+    <value>La chiave esiste già (posizione del file musicale): {0}</value>
   </data>
-  <data name="KeyNotFoundForActivation" xml:space="preserve">  
-   <value>La chiave non esiste, impossibile verificare lo stato di attivazione, il programma sarà attivato per impostazione predefinita.</value>  
+  <data name="KeyNotFoundForActivation" xml:space="preserve">
+    <value>La chiave non esiste, impossibile verificare lo stato di attivazione, il programma sarà attivato per impostazione predefinita.</value>
   </data>
-  <data name="ValueNotFoundDefaultActivation" xml:space="preserve">  
-   <value>Il valore {0} non esiste, il programma sarà attivato per impostazione predefinita.</value>  
+  <data name="ValueNotFoundDefaultActivation" xml:space="preserve">
+    <value>Il valore {0} non esiste, il programma sarà attivato per impostazione predefinita.</value>
   </data>
-  <data name="ValueNotFound" xml:space="preserve">  
-   <value>Il valore {0} non esiste.</value>  
+  <data name="ValueNotFound" xml:space="preserve">
+    <value>Il valore {0} non esiste.</value>
   </data>
-  <data name="ValueTypeError" xml:space="preserve">  
-   <value>Il tipo del valore {0} non è convertibile in Integer. Codice errore: {1}</value>  
+  <data name="ValueTypeError" xml:space="preserve">
+    <value>Il tipo del valore {0} non è convertibile in Integer. Codice errore: {1}</value>
   </data>
-  <data name="ActivationState" xml:space="preserve">  
-   <value>Stato di attivazione ({0}): {1}</value>  
+  <data name="ActivationState" xml:space="preserve">
+    <value>Stato di attivazione ({0}): {1}</value>
   </data>
-  <data name="ServiceStoppedBothKeysInactive" xml:space="preserve">  
-   <value>Entrambi i valori {0} e {1} non sono impostati su 1. Il programma si fermerà.</value>  
+  <data name="ServiceStoppedBothKeysInactive" xml:space="preserve">
+    <value>Entrambi i valori {0} e {1} non sono impostati su 1. Il programma si fermerà.</value>
   </data>
-  <data name="ServiceStartedVerbose" xml:space="preserve">  
-   <value>uiiiii funziona In linguaggio serio: Il servizio OOBEMusic.exe è stato avviato con successo.</value>  
+  <data name="ServiceStartedVerbose" xml:space="preserve">
+    <value>uiiiii funziona In linguaggio serio: Il servizio OOBEMusic.exe è stato avviato con successo.</value>
   </data>
-  <data name="ServiceStarted" xml:space="preserve">  
-   <value>Il servizio OOBEMusic.exe è stato avviato con successo.</value>  
+  <data name="ServiceStarted" xml:space="preserve">
+    <value>Il servizio OOBEMusic.exe è stato avviato con successo.</value>
   </data>
-  <data name="MusicPlayedVerbose" xml:space="preserve">  
-   <value>La musica è stata riprodotta, normalmente OnO. In linguaggio serio: Il processo WWAHost.exe è stato rilevato e il programma sta riproducendo la musica. Posizione del file: {0}</value>  
+  <data name="MusicPlayedVerbose" xml:space="preserve">
+    <value>La musica è stata riprodotta, normalmente OnO. In linguaggio serio: Il processo WWAHost.exe è stato rilevato e il programma sta riproducendo la musica. Posizione del file: {0}</value>
   </data>
-  <data name="MusicPlayed" xml:space="preserve">  
-   <value>Il processo WWAHost.exe è stato rilevato e il programma sta riproducendo la musica. Posizione del file: {0}</value>  
+  <data name="MusicPlayed" xml:space="preserve">
+    <value>Il processo WWAHost.exe è stato rilevato e il programma sta riproducendo la musica. Posizione del file: {0}</value>
   </data>
-  <data name="MusicStoppedVerbose" xml:space="preserve">  
-   <value>La musica si è fermata, normalmente si è fermata. In linguaggio serio: Il processo WWAHost.exe è stato chiuso, la musica si fermerà.</value>  
+  <data name="MusicStoppedVerbose" xml:space="preserve">
+    <value>La musica si è fermata, normalmente si è fermata. In linguaggio serio: Il processo WWAHost.exe è stato chiuso, la musica si fermerà.</value>
   </data>
-  <data name="MusicStopped" xml:space="preserve">  
-   <value>Il processo WWAHost.exe è stato chiuso, la musica si fermerà.</value>  
+  <data name="MusicStopped" xml:space="preserve">
+    <value>Il processo WWAHost.exe è stato chiuso, la musica si fermerà.</value>
   </data>
-  <data name="MusicErrorVerbose" xml:space="preserve">  
-   <value>naaaahhhh non funziona più: {0} In linguaggio serio: Si è verificato un errore nell'applicazione che impedisce la riproduzione della musica. Verifica che il file sia un file .wav e che la posizione specificata nel registro di Windows alla chiave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile punti a una posizione valida e che il file esista ed è accessibile. Codice errore: {0}</value>  
+  <data name="MusicErrorVerbose" xml:space="preserve">
+    <value>naaaahhhh non funziona più: {0} In linguaggio serio: Si è verificato un errore nell'applicazione che impedisce la riproduzione della musica. Verifica che il file sia un file .wav e che la posizione specificata nel registro di Windows alla chiave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile punti a una posizione valida e che il file esista ed è accessibile. Codice errore: {0}</value>
   </data>
-  <data name="MusicError" xml:space="preserve">  
-   <value>Si è verificato un errore nell'applicazione che impedisce la riproduzione della musica. Verifica che il file sia un file .wav e che la posizione specificata nel registro di Windows alla chiave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile punti a una posizione valida e che il file esista ed è accessibile. Codice errore: {0}</value>  
+  <data name="MusicError" xml:space="preserve">
+    <value>Si è verificato un errore nell'applicazione che impedisce la riproduzione della musica. Verifica che il file sia un file .wav e che la posizione specificata nel registro di Windows alla chiave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile punti a una posizione valida e che il file esista ed è accessibile. Codice errore: {0}</value>
   </data>
-  <data name="ServiceStopRequestVerbose" xml:space="preserve">  
-   <value>Nope: In linguaggio serio: Il processo ha ricevuto una richiesta di arresto del sistema. Il processo si fermerà.</value>  
+  <data name="ServiceStopRequestVerbose" xml:space="preserve">
+    <value>Nope: In linguaggio serio: Il processo ha ricevuto una richiesta di arresto del sistema. Il processo si fermerà.</value>
   </data>
-  <data name="ServiceStopRequest" xml:space="preserve">  
-   <value>Il processo ha ricevuto una richiesta di arresto del sistema. Il processo si fermerà.</value>  
+  <data name="ServiceStopRequest" xml:space="preserve">
+    <value>Il processo ha ricevuto una richiesta di arresto del sistema. Il processo si fermerà.</value>
   </data>
-  <data name="ErrorCantLogInEventViewer" xml:space="preserve">  
-   <value>Impossibile registrare nel visualizzatore eventi a causa di un errore. Codice errore: {0}</value>  
+  <data name="ErrorCantLogInEventViewer" xml:space="preserve">
+    <value>Impossibile registrare nel visualizzatore eventi a causa di un errore. Codice errore: {0}</value>
   </data>
-  <data name="ServiceDescription" xml:space="preserve">  
-   <value>Riproduce musica durante l'Esperienza Out-of-Box di Microsoft.</value>  
+  <data name="ServiceDescription" xml:space="preserve">
+    <value>Riproduce musica durante l'Esperienza Out-of-Box di Microsoft.</value>
+  </data>
+  <data name="ServiceUninstallError" xml:space="preserve">
+    <value>Il servizio non è stato disinstallato correttamente. Codice di errore: {0}</value>
+  </data>
+  <data name="ServiceStartError" xml:space="preserve">
+    <value>Il servizio non è stato avviato correttamente dopo l'installazione: Codice di errore {0}</value>
+  </data>
+  <data name="ServiceStartedUponInstall" xml:space="preserve">
+    <value>Il servizio è stato installato e avviato con successo.</value>
+  </data>
+  <data name="ServiceOperationError" xml:space="preserve">
+    <value>Errore di operazione: {0}</value>
+  </data>
+  <data name="ServiceTimeoutError" xml:space="preserve">
+    <value>Il servizio non è stato avviato nel tempo previsto: {0}</value>
+  </data>
+  <data name="ServiceUnexpectedError" xml:space="preserve">
+    <value>Errore imprevisto: {0}</value>
   </data>
 </root>

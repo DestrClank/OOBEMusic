@@ -7,6 +7,8 @@ using System.Linq;
 using System.Resources;
 using System.ServiceProcess;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace OOBEMusic
 {
@@ -34,13 +36,10 @@ namespace OOBEMusic
             Installers.Add(serviceInstaller);
 
             serviceInstaller.AfterInstall += new InstallEventHandler(serviceInstaller1_AfterInstall);
-
         }
 
         public override void Uninstall(IDictionary savedState)
         {
-            base.Uninstall(savedState);
-
             try
             {
                 // Supprimer le service Windows
@@ -54,12 +53,27 @@ namespace OOBEMusic
 
                 // Supprimer le service du système
                 System.Diagnostics.Process.Start("sc.exe", "delete OOBEMusicService");
+
+                // Supprimer la clé de registre
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\DestrClank", writable: true);
+                if (key != null)
+                {
+                    key.DeleteSubKeyTree("OOBEMusic");
+                }
+
+                if (EventLog.SourceExists("OOBEMusic"))
+                {
+                    // Supprimer la source d'événements
+                    EventLog.DeleteEventSource("OOBEMusic");
+                }
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors de la désinstallation du service : {ex.Message}");
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceUninstallError"), ex.Message), EventLogEntryType.Error);
             }
-        }
 
+            base.Uninstall(savedState);
+        }
     }
 }
