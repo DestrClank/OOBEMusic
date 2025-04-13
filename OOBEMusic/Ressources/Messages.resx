@@ -183,4 +183,22 @@
   <data name="ServiceDescription" xml:space="preserve">
     <value>Plays music during the Microsoft Out-of-Box Experience.</value>
   </data>
+  <data name="ServiceUninstallError" xml:space="preserve">
+    <value>The service has not been uninstalled properly. Error code : {0}</value>
+  </data>
+  <data name="ServiceStartError" xml:space="preserve">
+    <value>The service didn't start properly after installation : Error code {0}</value>
+  </data>
+  <data name="ServiceStartedUponInstall" xml:space="preserve">
+    <value>The service has been installed and started successfully.</value>
+  </data>
+  <data name="ServiceOperationError" xml:space="preserve">
+    <value>Operation error: {0}</value>
+  </data>
+  <data name="ServiceTimeoutError" xml:space="preserve">
+    <value>The service did not start in the allotted time: {0}</value>
+  </data>
+  <data name="ServiceUnexpectedError" xml:space="preserve">
+    <value>Unexpected error: {0}</value>
+  </data>
 </root>

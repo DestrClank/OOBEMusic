@@ -183,4 +183,22 @@
   <data name="ServiceDescription" xml:space="preserve">
     <value>Joue de la musique pendant l'expérience OOBE.</value>
   </data>
+  <data name="ServiceUninstallError" xml:space="preserve">
+    <value>Le service n'a pas été désinstallé correctement. Code d'erreur : {0}</value>
+  </data>
+  <data name="ServiceStartError" xml:space="preserve">
+    <value>Le service n'a pas démarré correctement après l'installation : Code d'erreur {0}</value>
+  </data>
+  <data name="ServiceStartedUponInstall" xml:space="preserve">
+    <value>Le service a été installé et démarré avec succès.</value>
+  </data>
+  <data name="ServiceOperationError" xml:space="preserve">
+    <value>Erreur d'opération : {0}</value>
+  </data>
+  <data name="ServiceTimeoutError" xml:space="preserve">
+    <value>Le service n'a pas démarré dans le délai imparti : {0}</value>
+  </data>
+  <data name="ServiceUnexpectedError" xml:space="preserve">
+    <value>Erreur inattendue : {0}</value>
+  </data>
 </root>

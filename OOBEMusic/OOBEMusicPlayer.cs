@@ -69,10 +69,12 @@ namespace OOBEMusic
                 _stopRequested = false;
                 _HookThread = new Thread(() => HookIntoWWA());
                 _HookThread.Start();
+
+                string appPath = AppDomain.CurrentDomain.BaseDirectory;
+                string musicPath = appPath + "music.wav";
+                RegHelper.SaveKey(musicPath);
             }
-            string appPath = AppDomain.CurrentDomain.BaseDirectory;
-            string musicPath = appPath + "music.wav";
-            RegHelper.SaveKey(musicPath);
+
             if (SuperVerboseLogs == 1)
             {
                 Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStartedVerbose"), EventLogEntryType.Information);
