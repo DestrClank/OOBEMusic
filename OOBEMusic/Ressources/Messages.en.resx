@@ -145,7 +145,7 @@
     <value>Activation state ({0}): {1}</value>
   </data>
   <data name="ServiceStoppedBothKeysInactive" xml:space="preserve">
-    <value>Both values {0} and {1} are not set to 1. The program will stop.</value>
+    <value>Values {0}, {1} and {2} are not set to 1. The program will stop.</value>
   </data>
   <data name="ServiceStartedVerbose" xml:space="preserve">
     <value>uiiiii it works In serious language: The OOBEMusic.exe service has started successfully.</value>
@@ -154,16 +154,16 @@
     <value>The OOBEMusic.exe service has started successfully.</value>
   </data>
   <data name="MusicPlayedVerbose" xml:space="preserve">
-    <value>The music has been played, normally OnO. In serious language: The WWAHost.exe process has been detected and the program is playing the music. File location: {0}</value>
+    <value>The music has been played, normally OnO. In serious language: The {0} process has been detected and the program is playing the music. File location: {1}</value>
   </data>
   <data name="MusicPlayed" xml:space="preserve">
-    <value>The WWAHost.exe process has been detected and the program is playing the music. File location: {0}</value>
+    <value>The {0} process has been detected and the program is playing the music. File location: {1}</value>
   </data>
   <data name="MusicStoppedVerbose" xml:space="preserve">
-    <value>The music has stopped, normally it's stopped. In serious language: The WWAHost.exe process has been closed, the music will stop.</value>
+    <value>The music has stopped, normally it's stopped. In serious language: The {0} process has been closed, the music will stop.</value>
   </data>
   <data name="MusicStopped" xml:space="preserve">
-    <value>The WWAHost.exe process has been closed, the music will stop.</value>
+    <value>The {0} process has been closed, the music will stop.</value>
   </data>
   <data name="MusicErrorVerbose" xml:space="preserve">
     <value>naaaahhhh it doesn't work anymore: {0} In serious language: An error occurred in the application preventing the music from playing. Check that the file is a .wav file and that the location specified in the Windows registry at the key HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile points to a valid file location and that the file exists and is accessible. Error code: {0}</value>

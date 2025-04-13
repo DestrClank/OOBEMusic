@@ -24,19 +24,22 @@ namespace OOBEMusic
 
         private Thread _HookThread = null; // Thread for hooking into WWAHost process
 
-        // Fix for CS1519, CS1001, CS0106, CS1520, IDE1007: Move culture initialization to the constructor
-        public OOBEMusicPlayer() // Injectez le logger dans le constructeur
-        {
-            this.ServiceName = servicename;
-
-            InitializeComponent();
-        }
-
         static string WWAHostKeyName = "ActivateWWAHostMusic";
         static string FirstLogonAnimKeyName = "ActivateFirstLogonMusic";
         static string OOBEHostAppKeyName = "ActivateOOBEHostMusic";
         static string SuperVerboseLogsKeyName = "EnableSuperVerboseLogs";
         static int SuperVerboseLogs = 0;
+
+        static int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
+        static int FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
+        static int OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
+
+        public OOBEMusicPlayer()
+        {
+            this.ServiceName = servicename;
+
+            InitializeComponent();
+        }
 
         ServiceBase service = new ServiceBase();
 
@@ -54,15 +57,12 @@ namespace OOBEMusic
 
         protected override void OnStart(string[] args)
         {
-            int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
-            int FirstLogonState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
-            int OOBEHostAppState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
             SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName, 0);
 
-            if (WWAHostState != 1 && FirstLogonState != 1 && OOBEHostAppState != 1)
+            if (WWAHostState != 1 && FirstLogonAnimState != 1 && OOBEShellState != 1)
             {
-                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), WWAHostKeyName, FirstLogonAnimKeyName), EventLogEntryType.Information);
-                service.Stop();
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), WWAHostKeyName, FirstLogonAnimKeyName, OOBEHostAppKeyName), EventLogEntryType.Information);
+                base.Stop();
             }
             else
             {
@@ -88,45 +88,70 @@ namespace OOBEMusic
 
         }
 
-        void HookIntoWWA()
+        private void HookIntoWWA()
         {
             bool musicPlaying = false;
             string musicPath;
+            string processLogsStrings = string.Empty;
 
             // Check if the registry keys are set to 1
 
             player = new SoundPlayer();
 
-            int WWAHostActivate = RegHelper.CheckActivationState(WWAHostKeyName, default, false);
-            int FirstLogonAnimActivate = RegHelper.CheckActivationState(FirstLogonAnimKeyName, default, false);
-            int OOBEShellActivate = RegHelper.CheckActivationState(OOBEHostAppKeyName, default, false);
-
             while (!_stopRequested)
             {
-                if (Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, OOBEShellActivate) && !musicPlaying)
+                // Check if the processes are running and play the sound if they are
+                var (processeslist, exists) = Checkifprocessexists(WWAHostState, FirstLogonAnimState, OOBEShellState);
+                if (exists && !musicPlaying)
                 {
                     PlaySound(player, true, out musicPlaying, out musicPath);
 
+                    if (processeslist.Length > 0)
+                    {
+                        foreach (string process in processeslist)
+                        {
+                            processLogsStrings += process + ",";
+                        }
+                        processLogsStrings = processLogsStrings.TrimEnd(',');
+                    } else
+                    {
+                        processLogsStrings = processeslist[0];
+                    }
+
                     if (SuperVerboseLogs == 1)
                     {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayedVerbose"), musicPath), EventLogEntryType.Information);
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayedVerbose"), processLogsStrings, musicPath), EventLogEntryType.Information);
                     }
                     else
                     {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), musicPath), EventLogEntryType.Information);
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), processLogsStrings, musicPath), EventLogEntryType.Information);
                     }
 
 
                 }
-                else if (!Checkifprocessexists(WWAHostActivate, FirstLogonAnimActivate, OOBEShellActivate) && musicPlaying)
+                else if (!exists && musicPlaying)
                 {
-                    if (SuperVerboseLogs == 1)
+
+                    if (processeslist.Length > 0)
                     {
-                        Logging.EventLogger.LogToEventViewer(rm.GetString("MusicStoppedVerbose"), EventLogEntryType.Information);
+                        foreach (string process in processeslist)
+                        {
+                            processLogsStrings += process + ",";
+                        }
+                        processLogsStrings = processLogsStrings.TrimEnd(',');
                     }
                     else
                     {
-                        Logging.EventLogger.LogToEventViewer(rm.GetString("MusicStopped"), EventLogEntryType.Information);
+                        processLogsStrings = processeslist[0];
+                    }
+
+                    if (SuperVerboseLogs == 1)
+                    {
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings), EventLogEntryType.Information);
+                    }
+                    else
+                    {
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStopped"), processLogsStrings), EventLogEntryType.Information);
 
                     }
 
@@ -135,9 +160,7 @@ namespace OOBEMusic
                 }
 
                 Thread.Sleep(1000);
-                
             }
-
         }
 
         static private void PlaySound(SoundPlayer soundplayer, bool musicPlaying, out bool Playing, out string musicPath)
@@ -163,7 +186,7 @@ namespace OOBEMusic
             }
         }
 
-        static bool Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
+        private (string[] processeslist, bool exists) Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
         {
             string wwahost = "WWAHost";
             string firstbootanim = "FirstLogonAnim";
@@ -172,6 +195,8 @@ namespace OOBEMusic
             Process[] wwahostlist = Process.GetProcessesByName(wwahost);
             Process[] firstlogonlist = Process.GetProcessesByName(firstbootanim);
             Process[] oobehostlist = Process.GetProcessesByName(oobehost);
+
+            string[] processeslists = new string[3];
 
             bool exists = false;
 
@@ -182,6 +207,7 @@ namespace OOBEMusic
 
                 if (!interrupted)
                 {
+                    processeslists[0] = wwahostlist[0].ProcessName;
                     exists = true;
                 }
             }
@@ -193,6 +219,7 @@ namespace OOBEMusic
 
                 if (!interrupted)
                 {
+                    processeslists[1] = firstlogonlist[0].ProcessName;
                     exists = true;
                 }
 
@@ -203,11 +230,12 @@ namespace OOBEMusic
                 bool interrupted = CheckProcesses(oobehostlist);
                 if (!interrupted)
                 {
+                    processeslists[2] = oobehostlist[0].ProcessName;
                     exists = true;
                 }
             }
 
-            return exists;
+            return (processeslists, exists);
         }
 
         static bool CheckProcesses(Process[] processes)
