@@ -201,4 +201,16 @@
   <data name="ServiceUnexpectedError" xml:space="preserve">
     <value>Error inesperado: {0}</value>
   </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>No se encontró la clave de registro para el tiempo de espera del hilo. Usando el valor predeterminado.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>No se encontró el valor para el tiempo de espera del hilo. Usando el valor predeterminado: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>El valor del tiempo de espera del hilo es demasiado bajo. Ajustado al valor mínimo permitido: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>El valor del tiempo de espera del hilo se ha establecido en: {0} ms.</value>
+  </data>
 </root>

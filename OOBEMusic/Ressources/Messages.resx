@@ -201,4 +201,16 @@
   <data name="ServiceUnexpectedError" xml:space="preserve">
     <value>Unexpected error: {0}</value>
   </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>The registry key for the thread timeout was not found. Using the default value.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>The value for the thread timeout was not found. Using the default value: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>The thread timeout value is too low. Adjusted to the minimum allowed value: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>The thread timeout value is set to: {0} ms.</value>
+  </data>
 </root>

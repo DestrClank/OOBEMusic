@@ -201,4 +201,16 @@
   <data name="ServiceUnexpectedError" xml:space="preserve">
     <value>Erreur inattendue : {0}</value>
   </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>La clé de registre pour le délai d'attente du thread est introuvable. Utilisation de la valeur par défaut.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>La valeur pour le délai d'attente du thread est introuvable. Utilisation de la valeur par défaut : {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>La valeur du délai d'attente du thread est trop basse. Ajustée à la valeur minimale autorisée : {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>La valeur du délai d'attente du thread est définie sur : {0} ms.</value>
+  </data>
 </root>

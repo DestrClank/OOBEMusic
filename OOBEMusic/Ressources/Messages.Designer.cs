@@ -97,6 +97,15 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The registry key for the thread timeout was not found. Using the default value..
+        /// </summary>
+        internal static string KeyNotFoundForThreadTimeout {
+            get {
+                return ResourceManager.GetString("KeyNotFoundForThreadTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The key does not exist, creating it..
         /// </summary>
         internal static string KeyNotFoundMessage {
@@ -286,6 +295,24 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The thread timeout value is too low. Adjusted to the minimum allowed value: {0} ms..
+        /// </summary>
+        internal static string ThreadTimeoutTooLow {
+            get {
+                return ResourceManager.GetString("ThreadTimeoutTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The thread timeout value is set to: {0} ms..
+        /// </summary>
+        internal static string ThreadTimeoutValue {
+            get {
+                return ResourceManager.GetString("ThreadTimeoutValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The value {0} does not exist..
         /// </summary>
         internal static string ValueNotFound {
@@ -300,6 +327,15 @@ namespace OOBEMusic.Ressources {
         internal static string ValueNotFoundDefaultActivation {
             get {
                 return ResourceManager.GetString("ValueNotFoundDefaultActivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The value for the thread timeout was not found. Using the default value: {0} ms..
+        /// </summary>
+        internal static string ValueNotFoundDefaultThreadTimeout {
+            get {
+                return ResourceManager.GetString("ValueNotFoundDefaultThreadTimeout", resourceCulture);
             }
         }
         
