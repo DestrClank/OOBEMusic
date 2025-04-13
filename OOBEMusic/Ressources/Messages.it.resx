@@ -201,4 +201,16 @@
   <data name="ServiceUnexpectedError" xml:space="preserve">
     <value>Errore imprevisto: {0}</value>
   </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>La chiave di registro per il timeout del thread non è stata trovata. Utilizzo del valore predefinito.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>Il valore per il timeout del thread non è stato trovato. Utilizzo del valore predefinito: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>Il valore del timeout del thread è troppo basso. Regolato al valore minimo consentito: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>Il valore del timeout del thread è impostato su: {0} ms.</value>
+  </data>
 </root>

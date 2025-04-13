@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using System.Resources;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace OOBEMusic
 {
@@ -33,6 +34,7 @@ namespace OOBEMusic
         static int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
         static int FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
         static int OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
+        static int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Sleep time for the thread in milliseconds
 
         public OOBEMusicPlayer()
         {
@@ -40,8 +42,6 @@ namespace OOBEMusic
 
             InitializeComponent();
         }
-
-        ServiceBase service = new ServiceBase();
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -106,17 +106,7 @@ namespace OOBEMusic
                 {
                     PlaySound(player, true, out musicPlaying, out musicPath);
 
-                    if (processeslist.Length > 0)
-                    {
-                        foreach (string process in processeslist)
-                        {
-                            processLogsStrings += process + ",";
-                        }
-                        processLogsStrings = processLogsStrings.TrimEnd(',');
-                    } else
-                    {
-                        processLogsStrings = processeslist[0];
-                    }
+                    processLogsStrings = ParseProcesses(processeslist);
 
                     if (SuperVerboseLogs == 1)
                     {
@@ -131,20 +121,6 @@ namespace OOBEMusic
                 }
                 else if (!exists && musicPlaying)
                 {
-
-                    if (processeslist.Length > 0)
-                    {
-                        foreach (string process in processeslist)
-                        {
-                            processLogsStrings += process + ",";
-                        }
-                        processLogsStrings = processLogsStrings.TrimEnd(',');
-                    }
-                    else
-                    {
-                        processLogsStrings = processeslist[0];
-                    }
-
                     if (SuperVerboseLogs == 1)
                     {
                         Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings), EventLogEntryType.Information);
@@ -159,8 +135,27 @@ namespace OOBEMusic
                     player.Stop();
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(ThreadTimeout);
             }
+        }
+
+        private string ParseProcesses(List<string> processeslist)
+        {
+            string processLogsStrings = string.Empty;
+            if (processeslist.Count > 0)
+            {
+                foreach (string process in processeslist)
+                {
+                    processLogsStrings += process + ".exe" + ", ";
+                }
+                processLogsStrings = processLogsStrings.TrimEnd(',', ' ');
+            }
+            else
+            {
+                processLogsStrings = processeslist[0];
+            }
+
+            return processLogsStrings;
         }
 
         static private void PlaySound(SoundPlayer soundplayer, bool musicPlaying, out bool Playing, out string musicPath)
@@ -186,7 +181,7 @@ namespace OOBEMusic
             }
         }
 
-        private (string[] processeslist, bool exists) Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
+        private (List<string> processeslist, bool exists) Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
         {
             string wwahost = "WWAHost";
             string firstbootanim = "FirstLogonAnim";
@@ -196,7 +191,7 @@ namespace OOBEMusic
             Process[] firstlogonlist = Process.GetProcessesByName(firstbootanim);
             Process[] oobehostlist = Process.GetProcessesByName(oobehost);
 
-            string[] processeslists = new string[3];
+            List<string> processeslists = new List<string>();
 
             bool exists = false;
 
@@ -207,7 +202,7 @@ namespace OOBEMusic
 
                 if (!interrupted)
                 {
-                    processeslists[0] = wwahostlist[0].ProcessName;
+                    processeslists.Add(wwahostlist[0].ProcessName);
                     exists = true;
                 }
             }
@@ -219,7 +214,7 @@ namespace OOBEMusic
 
                 if (!interrupted)
                 {
-                    processeslists[1] = firstlogonlist[0].ProcessName;
+                    processeslists.Add(firstlogonlist[0].ProcessName);
                     exists = true;
                 }
 
@@ -230,7 +225,7 @@ namespace OOBEMusic
                 bool interrupted = CheckProcesses(oobehostlist);
                 if (!interrupted)
                 {
-                    processeslists[2] = oobehostlist[0].ProcessName;
+                    processeslists.Add(oobehostlist[0].ProcessName);
                     exists = true;
                 }
             }

@@ -201,4 +201,16 @@
   <data name="ServiceUnexpectedError" xml:space="preserve">
     <value>Erro inesperado: {0}</value>
   </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>A chave de registro para o tempo limite do thread não foi encontrada. Usando o valor padrão.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>O valor para o tempo limite do thread não foi encontrado. Usando o valor padrão: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>O valor do tempo limite do thread é muito baixo. Ajustado para o valor mínimo permitido: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>O valor do tempo limite do thread está definido como: {0} ms.</value>
+  </data>
 </root>

@@ -41,6 +41,53 @@ namespace OOBEMusic
             }
         }
 
+        public static int CheckThreadTimeout()
+        {
+            int sleepvalue = 1000;
+
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, false))
+            {
+                if (key == null)
+                {
+                    Logging.EventLogger.LogToEventViewer(rm.GetString("KeyNotFoundForThreadTimeout"), EventLogEntryType.Warning);
+                    return sleepvalue;
+                }
+                else
+                {
+                    try
+                    {
+                        if (key.GetValue("ThreadTimeout") != null)
+                        {
+                            sleepvalue = Convert.ToInt32(key.GetValue("ThreadTimeout"));
+                            if (sleepvalue < 100)
+                            {
+                                sleepvalue = 100;
+                                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ThreadTimeoutTooLow"), sleepvalue), EventLogEntryType.Warning);
+                            }
+                            else
+                            {
+                                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ThreadTimeoutValue"), sleepvalue), EventLogEntryType.Information);
+                            }
+                        }
+                        else
+                        {
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ValueNotFoundDefaultThreadTimeout"), sleepvalue), EventLogEntryType.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ValueTypeError"), "ThreadTimeout", ex.Message), EventLogEntryType.Error);
+                    }
+                    finally
+                    {
+                        key.Close();
+                        key.Dispose();
+                    }
+                }
+            }
+            return sleepvalue;
+        }
+
         public static string GetValue(string name)
         {
             string value = null;
