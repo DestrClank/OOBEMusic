@@ -107,13 +107,14 @@ For these keys, you have to make them into `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432N
 - `ActivateWWAHostMusic` : This will enable the playback when "WWAHost.exe" is detected. It will play on the OOBE screens and on the new user window when you make a new user account on the computer.
 - `ActivateFirstLogonMusic` : This will enable the playback when you finish the OOBE phase and the preparation screen with the text passing and the animation background starts. This screen is caused by `FirstLogonAnim.exe`.
 - `ActivateOOBEHostMusic` : This will enable the playback during specific phases of the OOBE. If you decided to restore your OneDrive backup for example, another process called "OOBEShellHost.exe" will be opened instead of "WWAHost.exe".
+- `ThreadTimeout` : Sets how frequently the program checks if any processes is running or not.
+  - Note : The value is in milliseconds : 1000ms = 1 sec.
+  - Warning : Don't set the value too high, the shutdown time of your computer could be affected badly !
 
 ### Disable the service with registry
 You can use these 3 keys described earlier and set them as `0` to completely disable the service. In this case, the service will automatically close, freeing some RAM in the process.
 
 # More details
-Uses .NET Framework 4.8.
-
-"Windows Welcome Music" by Stan LePard.
-
-The program saves execution logs into the Event Viewer, and they are translated in French, Spanish, English, German, Italian.
+- Uses .NET Framework 4.8.
+- "Windows Welcome Music" by Stan LePard.
+- The program saves execution logs into the Event Viewer, and they are translated in French, Spanish, English, German, Italian.
