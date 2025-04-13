@@ -213,4 +213,13 @@
   <data name="ThreadTimeoutValue" xml:space="preserve">
     <value>Il valore del timeout del thread è impostato su: {0} ms.</value>
   </data>
+  <data name="KeyNotFoundForMusicFile" xml:space="preserve">
+    <value>La chiave di registro per il file musicale non è stata trovata. Utilizzo del percorso predefinito.</value>
+  </data>
+  <data name="RegistryKeyCreatedMessage" xml:space="preserve">
+    <value>La chiave di registro 'MusicFile' è stata creata con successo.</value>
+  </data>
+  <data name="RegistryKeyCreationError" xml:space="preserve">
+    <value>Si è verificato un errore durante la creazione della chiave di registro 'MusicFile'. Errore: {0}</value>
+  </data>
 </root>

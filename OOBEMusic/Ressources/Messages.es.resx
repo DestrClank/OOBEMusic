@@ -213,4 +213,13 @@
   <data name="ThreadTimeoutValue" xml:space="preserve">
     <value>El valor del tiempo de espera del hilo se ha establecido en: {0} ms.</value>
   </data>
+  <data name="KeyNotFoundForMusicFile" xml:space="preserve">
+    <value>No se encontró la clave de registro para el archivo de música. Usando la ruta predeterminada.</value>
+  </data>
+  <data name="RegistryKeyCreatedMessage" xml:space="preserve">
+    <value>La clave de registro 'MusicFile' se ha creado con éxito.</value>
+  </data>
+  <data name="RegistryKeyCreationError" xml:space="preserve">
+    <value>Se produjo un error al crear la clave de registro 'MusicFile'. Error: {0}</value>
+  </data>
 </root>

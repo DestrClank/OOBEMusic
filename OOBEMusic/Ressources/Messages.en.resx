@@ -213,4 +213,13 @@
   <data name="ThreadTimeoutValue" xml:space="preserve">
     <value>The thread timeout value is set to: {0} ms.</value>
   </data>
+  <data name="KeyNotFoundForMusicFile" xml:space="preserve">
+    <value>The registry key for the music file was not found. Using the default path.</value>
+  </data>
+  <data name="RegistryKeyCreatedMessage" xml:space="preserve">
+    <value>The registry key 'MusicFile' has been successfully created.</value>
+  </data>
+  <data name="RegistryKeyCreationError" xml:space="preserve">
+    <value>An error occurred while creating the registry key 'MusicFile'. Error: {0}</value>
+  </data>
 </root>
