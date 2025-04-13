@@ -97,6 +97,15 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The registry key for the music file was not found. Using the default path..
+        /// </summary>
+        internal static string KeyNotFoundForMusicFile {
+            get {
+                return ResourceManager.GetString("KeyNotFoundForMusicFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The registry key for the thread timeout was not found. Using the default value..
         /// </summary>
         internal static string KeyNotFoundForThreadTimeout {
@@ -183,6 +192,24 @@ namespace OOBEMusic.Ressources {
         internal static string RegistryCreationError {
             get {
                 return ResourceManager.GetString("RegistryCreationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The registry key &apos;MusicFile&apos; has been successfully created..
+        /// </summary>
+        internal static string RegistryKeyCreatedMessage {
+            get {
+                return ResourceManager.GetString("RegistryKeyCreatedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error occurred while creating the registry key &apos;MusicFile&apos;. Error: {0}.
+        /// </summary>
+        internal static string RegistryKeyCreationError {
+            get {
+                return ResourceManager.GetString("RegistryKeyCreationError", resourceCulture);
             }
         }
         

@@ -35,8 +35,23 @@ namespace OOBEMusic
                 }
                 else
                 {
-                    string value = (string)key.GetValue("MusicFile");
-                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("KeyAlreadyExistsMessage"), value), EventLogEntryType.Information);
+                    if (key.GetValue("MusicFile") == null)
+                    {
+                        try
+                        {
+                            key.SetValue("MusicFile", chemin, RegistryValueKind.String);
+                            Logging.EventLogger.LogToEventViewer(rm.GetString("RegistryKeyCreatedMessage"), EventLogEntryType.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("RegistryKeyCreationError"), ex.Message), EventLogEntryType.Error);
+                        }
+                    }
+                    else
+                    {
+                        string value = (string)key.GetValue("MusicFile");
+                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("KeyAlreadyExistsMessage"), value), EventLogEntryType.Information);
+                    }
                 }
             }
         }
@@ -93,8 +108,9 @@ namespace OOBEMusic
             string value = null;
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, false))
             {
-                if (key == null)
+                if (key == null || key.GetValue("MusicFile") == null)
                 {
+                    Logging.EventLogger.LogToEventViewer(rm.GetString("KeyNotFoundForMusicFile"), EventLogEntryType.Warning);
                     string appPath = AppDomain.CurrentDomain.BaseDirectory;
                     string musicPath = appPath + "music.wav";
                     return musicPath;
