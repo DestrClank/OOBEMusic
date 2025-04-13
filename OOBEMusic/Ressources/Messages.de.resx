@@ -145,7 +145,7 @@
     <value>Aktivierungsstatus ({0}): {1}</value>
   </data>
   <data name="ServiceStoppedBothKeysInactive" xml:space="preserve">
-    <value>Beide Werte {0} und {1} sind nicht auf 1 gesetzt. Das Programm wird beendet.</value>
+    <value>Beide Werte {0}, {1}, {2} sind nicht auf 1 gesetzt. Das Programm wird beendet.</value>
   </data>
   <data name="ServiceStartedVerbose" xml:space="preserve">
     <value>uiiiii es funktioniert In ernster Sprache: Der Dienst OOBEMusic.exe wurde erfolgreich gestartet.</value>
@@ -154,16 +154,16 @@
     <value>Der Dienst OOBEMusic.exe wurde erfolgreich gestartet.</value>
   </data>
   <data name="MusicPlayedVerbose" xml:space="preserve">
-    <value>Die Musik wurde abgespielt, normalerweise OnO. In ernster Sprache: Der Prozess WWAHost.exe wurde erkannt und das Programm spielt die Musik ab. Dateispeicherort: {0}</value>
+    <value>Die Musik wurde abgespielt, normalerweise OnO. In ernster Sprache: Der Prozess {0} wurde erkannt und das Programm spielt die Musik ab. Dateispeicherort: {1}</value>
   </data>
   <data name="MusicPlayed" xml:space="preserve">
-    <value>Der Prozess WWAHost.exe wurde erkannt und das Programm spielt die Musik ab. Dateispeicherort: {0}</value>
+    <value>Der Prozess {0} wurde erkannt und das Programm spielt die Musik ab. Dateispeicherort: {1}</value>
   </data>
   <data name="MusicStoppedVerbose" xml:space="preserve">
-    <value>Die Musik wurde gestoppt, normalerweise ist sie gestoppt. In ernster Sprache: Der Prozess WWAHost.exe wurde geschlossen, die Musik wird gestoppt.</value>
+    <value>Die Musik wurde gestoppt, normalerweise ist sie gestoppt. In ernster Sprache: Der Prozess {0} wurde geschlossen, die Musik wird gestoppt.</value>
   </data>
   <data name="MusicStopped" xml:space="preserve">
-    <value>Der Prozess WWAHost.exe wurde geschlossen, die Musik wird gestoppt.</value>
+    <value>Der Prozess {0} wurde geschlossen, die Musik wird gestoppt.</value>
   </data>
   <data name="MusicErrorVerbose" xml:space="preserve">
     <value>naaaahhhh es funktioniert nicht mehr: {0} In ernster Sprache: Es ist ein Fehler in der Anwendung aufgetreten, der das Abspielen der Musik verhindert. Überprüfen Sie, ob die Datei eine .wav-Datei ist und ob der im Windows-Registrierungseditor unter dem Schlüssel HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile angegebene Speicherort auf eine gültige Datei verweist und ob die Datei existiert und zugänglich ist. Fehlercode: {0}</value>

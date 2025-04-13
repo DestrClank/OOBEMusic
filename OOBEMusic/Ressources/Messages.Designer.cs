@@ -124,7 +124,7 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The WWAHost.exe process has been detected and the program is playing the music.\nFile location: {0}.
+        ///   Recherche une chaîne localisée semblable à The {0} process has been detected and the program is playing the music.\nFile location: {1}.
         /// </summary>
         internal static string MusicPlayed {
             get {
@@ -133,7 +133,7 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The music has been played, normally OnO.\nIn serious language: The WWAHost.exe process has been detected and the program is playing the music.\nFile location: {0}.
+        ///   Recherche une chaîne localisée semblable à The music has been played, normally OnO.\nIn serious language: The {0} has been detected and the program is playing the music.\nFile location: {1}.
         /// </summary>
         internal static string MusicPlayedVerbose {
             get {
@@ -142,7 +142,7 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The WWAHost.exe process has been closed, the music will stop..
+        ///   Recherche une chaîne localisée semblable à The {0} process has been closed, the music will stop..
         /// </summary>
         internal static string MusicStopped {
             get {
@@ -151,7 +151,7 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The music has stopped, normally it&apos;s stopped.\nIn serious language: The WWAHost.exe process has been closed, the music will stop..
+        ///   Recherche une chaîne localisée semblable à The music has stopped, normally it&apos;s stopped.\nIn serious language: The {0} process has been closed, the music will stop..
         /// </summary>
         internal static string MusicStoppedVerbose {
             get {
@@ -196,15 +196,6 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Operation error: {0}.
-        /// </summary>
-        internal static string ServiceOperationError1 {
-            get {
-                return ResourceManager.GetString("ServiceOperationError1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à The OOBEMusic.exe service has started successfully..
         /// </summary>
         internal static string ServiceStarted {
@@ -241,7 +232,7 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Both values {0} and {1} are not set to 1. The program will stop..
+        ///   Recherche une chaîne localisée semblable à Values {0}, {1} and {2} are not set to 1. The program will stop..
         /// </summary>
         internal static string ServiceStoppedBothKeysInactive {
             get {
