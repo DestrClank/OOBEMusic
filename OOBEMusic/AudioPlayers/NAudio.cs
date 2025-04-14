@@ -48,10 +48,9 @@ public class NAudioClass : IAudioPlayer
         }
     }
 
-    public void PlaySound(MemoryStream memoryStream, IVGAudioPlayer audioPlayer = null)
+    public void PlaySound(MemoryStream memoryStream)
     {
-        // Cette méthode est laissée vide car elle n'est pas utilisée dans cette implémentation.
-        // Vous pouvez choisir de l'implémenter si nécessaire.
+        throw new NotImplementedException("Not implemented.");
     }
 
     /// <summary>

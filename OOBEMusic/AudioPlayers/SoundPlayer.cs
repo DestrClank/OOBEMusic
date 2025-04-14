@@ -14,7 +14,6 @@ public class SoundPlayerClass : IAudioPlayer
 {
     private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
     private SoundPlayer player;
-    private IVGAudioPlayer audioExtractor;
 
     private bool disposed = false;
 
@@ -55,7 +54,7 @@ public class SoundPlayerClass : IAudioPlayer
     /// Joue un fichier audio en boucle à partir d'un flux en mémoire.
     /// </summary>
     /// <param name="memoryStream">Flux en mémoire contenant les données audio.</param>
-    public void PlaySound(MemoryStream memoryStream, IVGAudioPlayer audioPlayer)
+    public void PlaySound(MemoryStream memoryStream)
     {
         if (disposed)
         {
@@ -69,7 +68,6 @@ public class SoundPlayerClass : IAudioPlayer
 
         try
         {
-            audioExtractor = audioPlayer;
             player = new SoundPlayer(memoryStream);
             player.PlayLooping();
         }
@@ -97,10 +95,6 @@ public class SoundPlayerClass : IAudioPlayer
         }
         finally
         {
-            // Libérer les ressources
-            audioExtractor?.Dispose();
-            audioExtractor = null;
-
             if (player != null)
             {
                 player.Dispose();
