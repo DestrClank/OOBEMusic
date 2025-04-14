@@ -249,12 +249,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_15D9BBE4F9A470E71507523545DB7699"
-        "OwnerKey" = "8:_B9DAF081B33B8BFFFA5D40DB6F9C81D1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_166D688E1AEB4C273E59347C289E2828"
         "OwnerKey" = "8:_80CC2F5E9D5454934AD2A83590C6D33D"
         "MsmSig" = "8:_UNDEFINED"
@@ -377,6 +371,12 @@
         {
         "MsmKey" = "8:_248E25500C1C6458C12C499AF9A02960"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24DA9135CFEC40C7A620B520180A5DAD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -513,6 +513,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3B56DD30942743FBAC432911E80115D1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3C42BF1FC04A3930D0A648E981CF1E6A"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -521,6 +527,12 @@
         {
         "MsmKey" = "8:_3E1163F88DC00FEAD9BD7ED895DE359C"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43B4A19948404BB48DC1815FB642DDDD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -693,8 +705,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5A0ACD69B1834B298B03C981CBC8AF7E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5E7AC18AAA3A74D5D8C0EAEC0576EE73"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5EBD831356BA435E9DB02C0351A5B48E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -837,6 +861,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6D34C98914854BD785EEF9F665041246"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6DD1C1A17A76AC907A6DBA77E8C19E3A"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -850,12 +880,6 @@
         "Entry"
         {
         "MsmKey" = "8:_707476FD5EC4E708BFBD050135400DF9"
-        "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_726ACC557E3501552D20CDCEE1F457C4"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -935,6 +959,12 @@
         {
         "MsmKey" = "8:_7DA97BF1A4CFED1A914189C57B3987F2"
         "OwnerKey" = "8:_15D9BBE4F9A470E71507523545DB7699"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7E2DB1FF8959429A801DD8321E87B716"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1197,6 +1227,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8D2A1942B7E0430C81D6C1BB0F9149EF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8DBC648C028EDB99F9C732E1BF15C23E"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -1353,6 +1389,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_996C9A206A1A4A149F128462F4BF9B75"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A6C01167D4124C13FAF39D9DB1E61B9"
         "OwnerKey" = "8:_D4451BB4F2BB603078210CC3106F6CCD"
         "MsmSig" = "8:_UNDEFINED"
@@ -1373,6 +1415,12 @@
         {
         "MsmKey" = "8:_9A6C01167D4124C13FAF39D9DB1E61B9"
         "OwnerKey" = "8:_9DC4A782A706BEE423DDA9E412161EDD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C917F807D754115835E218920C7D4EF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1534,12 +1582,6 @@
         "Entry"
         {
         "MsmKey" = "8:_AE46C80036661BF13313B6193B7D474B"
-        "OwnerKey" = "8:_726ACC557E3501552D20CDCEE1F457C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AE46C80036661BF13313B6193B7D474B"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1623,6 +1665,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B193061A14CD403580DE08BCCD9EEF59"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B45BA85EB0CCAE709A69112F2E314A5A"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -1641,14 +1689,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B9DAF081B33B8BFFFA5D40DB6F9C81D1"
-        "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B9DAF081B33B8BFFFA5D40DB6F9C81D1"
-        "OwnerKey" = "8:_726ACC557E3501552D20CDCEE1F457C4"
+        "MsmKey" = "8:_B8A2A63690954B539D7D74A295B288CA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1887,6 +1929,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E36A30B39638484881B90EE1ACB9DD97"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E48DA404371BA814056A5881EEA7277C"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -1907,6 +1955,12 @@
         {
         "MsmKey" = "8:_E72B73F7769EC058491729E7D1AD4A2A"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E9EFE7C99BF642CAAF3C0B448EC358AA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2013,6 +2067,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F3FD5D0558F94C64A8B74A257DDD5345"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F6E9D0E211B774FF289DD55E65D3BCE9"
         "OwnerKey" = "8:_9E3D70548C21FCE4CF6A246B7F28F59B"
         "MsmSig" = "8:_UNDEFINED"
@@ -2045,6 +2105,12 @@
         {
         "MsmKey" = "8:_F71A5927876445A8F351FFDD774CB7BE"
         "OwnerKey" = "8:_F6E9D0E211B774FF289DD55E65D3BCE9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F849E3DA972449349DD432133AE684B9"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2091,14 +2157,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
+        "MsmKey" = "8:_FDE4ACCBAE134AA0B03D97CEBCF25DD3"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_726ACC557E3501552D20CDCEE1F457C4"
+        "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3861,6 +3927,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_24DA9135CFEC40C7A620B520180A5DAD"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libspeex-1.dll"
+            "TargetName" = "8:libspeex-1.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_24F2277A47782EDD861C81A04285C8EE"
             {
             "AssemblyRegister" = "3:1"
@@ -4326,6 +4412,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B56DD30942743FBAC432911E80115D1"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\in_vgmstream.dll"
+            "TargetName" = "8:in_vgmstream.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3C42BF1FC04A3930D0A648E981CF1E6A"
             {
             "AssemblyRegister" = "3:1"
@@ -4386,6 +4492,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_43B4A19948404BB48DC1815FB642DDDD"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\vgmstream-cli.exe"
+            "TargetName" = "8:vgmstream-cli.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43FC4387F3C8DAE2333C9550C4B59D3C"
@@ -4791,6 +4917,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5A0ACD69B1834B298B03C981CBC8AF7E"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\avcodec-vgmstream-59.dll"
+            "TargetName" = "8:avcodec-vgmstream-59.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5E7AC18AAA3A74D5D8C0EAEC0576EE73"
             {
             "AssemblyRegister" = "3:1"
@@ -4820,6 +4966,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5EBD831356BA435E9DB02C0351A5B48E"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libcelt-0061.dll"
+            "TargetName" = "8:libcelt-0061.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_64362E4B54F124B185889905DE987951"
@@ -5132,6 +5298,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D34C98914854BD785EEF9F665041246"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\swresample-vgmstream-4.dll"
+            "TargetName" = "8:swresample-vgmstream-4.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DD1C1A17A76AC907A6DBA77E8C19E3A"
             {
             "AssemblyRegister" = "3:1"
@@ -5208,37 +5394,6 @@
                     }
                 }
             "SourcePath" = "8:System.Xml.XmlDocument.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B75E9E63EEA4425E97E518D61E97CA2C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_726ACC557E3501552D20CDCEE1F457C4"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:vgmstream, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_726ACC557E3501552D20CDCEE1F457C4"
-                    {
-                    "Name" = "8:vgmstream.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:vgmstream.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B75E9E63EEA4425E97E518D61E97CA2C"
@@ -5440,6 +5595,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E2DB1FF8959429A801DD8321E87B716"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libg719_decode.dll"
+            "TargetName" = "8:libg719_decode.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7F0E189F823496BA8ADBAB49170848AE"
@@ -5752,6 +5927,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D2A1942B7E0430C81D6C1BB0F9149EF"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libmpg123-0.dll"
+            "TargetName" = "8:libmpg123-0.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8DBC648C028EDB99F9C732E1BF15C23E"
             {
             "AssemblyRegister" = "3:1"
@@ -6062,6 +6257,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_996C9A206A1A4A149F128462F4BF9B75"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\xmp-vgmstream.dll"
+            "TargetName" = "8:xmp-vgmstream.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9A6C01167D4124C13FAF39D9DB1E61B9"
             {
             "AssemblyRegister" = "3:1"
@@ -6091,6 +6306,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C917F807D754115835E218920C7D4EF"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\avutil-vgmstream-57.dll"
+            "TargetName" = "8:avutil-vgmstream-57.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9DC4A782A706BEE423DDA9E412161EDD"
@@ -6589,6 +6824,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B193061A14CD403580DE08BCCD9EEF59"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libcelt-0110.dll"
+            "TargetName" = "8:libcelt-0110.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B45BA85EB0CCAE709A69112F2E314A5A"
             {
             "AssemblyRegister" = "3:1"
@@ -6682,23 +6937,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B9DAF081B33B8BFFFA5D40DB6F9C81D1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8A2A63690954B539D7D74A295B288CA"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Esper.Accelerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B9DAF081B33B8BFFFA5D40DB6F9C81D1"
-                    {
-                    "Name" = "8:Esper.Accelerator.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Esper.Accelerator.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\COPYING"
+            "TargetName" = "8:COPYING"
             "Tag" = "8:"
-            "Folder" = "8:_B75E9E63EEA4425E97E518D61E97CA2C"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -6710,7 +6954,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA23270FBEFE6AE8159275C5FA8A8156"
@@ -7581,6 +7825,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E36A30B39638484881B90EE1ACB9DD97"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\avformat-vgmstream-59.dll"
+            "TargetName" = "8:avformat-vgmstream-59.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E48DA404371BA814056A5881EEA7277C"
             {
             "AssemblyRegister" = "3:1"
@@ -7672,6 +7936,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E9EFE7C99BF642CAAF3C0B448EC358AA"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libvorbis.dll"
+            "TargetName" = "8:libvorbis.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EACC03C55DF64118B20D44A4D5526126"
@@ -7911,6 +8195,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3FD5D0558F94C64A8B74A257DDD5345"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\libatrac9.dll"
+            "TargetName" = "8:libatrac9.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6E9D0E211B774FF289DD55E65D3BCE9"
             {
             "AssemblyRegister" = "3:1"
@@ -7971,6 +8275,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F849E3DA972449349DD432133AE684B9"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\USAGE.md"
+            "TargetName" = "8:USAGE.md"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FAC75ED3F255A8AE5BB4AD9643C041A3"
@@ -8159,6 +8483,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FDE4ACCBAE134AA0B03D97CEBCF25DD3"
+            {
+            "SourcePath" = "8:..\\OOBEMusic\\Libs\\vgmstream\\README.md"
+            "TargetName" = "8:README.md"
+            "Tag" = "8:"
+            "Folder" = "8:_14C93CD309AB4EB7B67262E8FE13B925"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -8186,6 +8530,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1E82446551AD46CE93ADE14B1BA0FBFD"
+                    {
+                    "Name" = "8:Libs"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_5FC97A30F0C044B4B23162B82213C741"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_14C93CD309AB4EB7B67262E8FE13B925"
+                            {
+                            "Name" = "8:vgmstream"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_A8A4B0F936B34B29BE6BE8B1CEA0F0BD"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_D8B461787F4E48E78C8061B1C2A7A44F"
@@ -8216,7 +8582,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OOBE Music Player"
         "ProductCode" = "8:{832E2460-4F6B-40F3-83F9-B54575923A77}"
-        "PackageCode" = "8:{3F7F1900-7959-4F6B-A377-562E344247E7}"
+        "PackageCode" = "8:{8EE3BB31-62E5-49F5-AD0E-D46F17FF0AA1}"
         "UpgradeCode" = "8:{1F2111F1-254E-4150-90F1-C02BBEC8ADD2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -8737,7 +9103,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3175C25F240148D69BA3A066FC51E116"
             {
-            "SourcePath" = "8:..\\OOBEMusic\\obj\\x86\\Release\\OOBEMusic.exe"
+            "SourcePath" = "8:..\\OOBEMusic\\obj\\x86\\Debug\\OOBEMusic.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B75E9E63EEA4425E97E518D61E97CA2C"
