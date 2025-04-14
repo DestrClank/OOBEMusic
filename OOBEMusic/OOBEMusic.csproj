@@ -108,6 +108,7 @@
     <Compile Include="AudioPlayers\BrstmPlayer.cs" />
     <Compile Include="AudioPlayers\At9Player.cs" />
     <Compile Include="AudioPlayers\AudioPlayersInterface.cs" />
+    <Compile Include="AudioPlayers\VGMStream.cs" />
     <Compile Include="AudioPlayers\NAudio.cs" />
     <Compile Include="AudioPlayers\SoundPlayer.cs" />
     <Compile Include="Utils\AudioApi.cs" />
@@ -173,6 +174,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Libs\vgmstream\COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Libs\vgmstream\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Libs\vgmstream\USAGE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="OOBEMusic_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
@@ -233,7 +243,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="music.wav" />
+    <Content Include="Libs\*\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content> 
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting">
@@ -260,10 +272,12 @@
     <PackageReference Include="VGAudio">
       <Version>2.2.1</Version>
     </PackageReference>
-    <PackageReference Include="vgmstream">
-      <Version>0.0.10</Version>
-    </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\x86\Debug\" />
+  </ItemGroup>
+  <Target Name="CreateImagesFolder" AfterTargets="Publish">
+    <MakeDir Directories="$(PublishDir)Libs" Condition="!Exists('$(PublishDir)Libs')" />
+  </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

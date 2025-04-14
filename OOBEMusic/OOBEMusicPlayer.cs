@@ -204,11 +204,31 @@ namespace OOBEMusic
                     player.PlaySound(musicPath);
                     break;
 
+                case ".at3":
+                    using (var vgmPlayer = new VGMStreamPlayer())
+                    {
+                        using (var memoryStream = vgmPlayer.Open(musicPath))
+                        {
+                            player = new SoundPlayerClass();
+                            player.PlaySound(memoryStream);
+                        }
+                    }
+                    break;
+
                 default:
                     // Par défaut, utiliser NAudio pour les formats non pris en charge
-                    player = new NAudioClass();
-                    player.PlaySound(musicPath);
+
+                    using (var vgmPlayer = new VGMStreamPlayer())
+                    {
+                        using (var memoryStream = vgmPlayer.Open(musicPath))
+                        {
+                            player = new SoundPlayerClass();
+                            player.PlaySound(memoryStream);
+                        }
+                    }
                     break;
+
+     
             }
         }
 
