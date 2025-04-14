@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using System.ServiceProcess;
-using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using System.Resources;
-using System.Globalization;
-using System.Collections.Generic;
+using System.IO;
+using OOBEMusic.Utils;
 
 namespace OOBEMusic
 {
@@ -21,7 +18,10 @@ namespace OOBEMusic
 
         public bool _stopRequested = false;
 
-        private SoundPlayer player;
+        // Audio API enum
+        IAudioPlayer player;
+
+        ProcessUtils processUtils = new ProcessUtils(); // Instance of ProcessUtils for process management
 
         private Thread _HookThread = null; // Thread for hooking into WWAHost process
 
@@ -53,6 +53,12 @@ namespace OOBEMusic
         {
             OnStop();
             return Task.CompletedTask;
+        }
+
+        public void RunAsConsole()
+        {
+            Console.WriteLine(rm.GetString("CannotRunInConsoleMode"));
+            Logging.EventLogger.LogToEventViewer(rm.GetString("CannotRunInConsoleMode"), EventLogEntryType.Error);
         }
 
         protected override void OnStart(string[] args)
@@ -94,163 +100,121 @@ namespace OOBEMusic
             string musicPath;
             string processLogsStrings = string.Empty;
 
-            // Check if the registry keys are set to 1
-
-            player = new SoundPlayer();
-
-            while (!_stopRequested)
-            {
-                // Check if the processes are running and play the sound if they are
-                var (processeslist, exists) = Checkifprocessexists(WWAHostState, FirstLogonAnimState, OOBEShellState);
-                if (exists && !musicPlaying)
-                {
-                    PlaySound(player, true, out musicPlaying, out musicPath);
-
-                    processLogsStrings = ParseProcesses(processeslist);
-
-                    if (SuperVerboseLogs == 1)
-                    {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayedVerbose"), processLogsStrings, musicPath), EventLogEntryType.Information);
-                    }
-                    else
-                    {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), processLogsStrings, musicPath), EventLogEntryType.Information);
-                    }
-
-
-                }
-                else if (!exists && musicPlaying)
-                {
-                    if (SuperVerboseLogs == 1)
-                    {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings), EventLogEntryType.Information);
-                    }
-                    else
-                    {
-                        Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStopped"), processLogsStrings), EventLogEntryType.Information);
-
-                    }
-
-                    musicPlaying = false;
-                    player.Stop();
-                }
-
-                Thread.Sleep(ThreadTimeout);
-            }
-        }
-
-        private string ParseProcesses(List<string> processeslist)
-        {
-            string processLogsStrings = string.Empty;
-            if (processeslist.Count > 0)
-            {
-                foreach (string process in processeslist)
-                {
-                    processLogsStrings += process + ".exe" + ", ";
-                }
-                processLogsStrings = processLogsStrings.TrimEnd(',', ' ');
-            }
-            else
-            {
-                processLogsStrings = processeslist[0];
-            }
-
-            return processLogsStrings;
-        }
-
-        static private void PlaySound(SoundPlayer soundplayer, bool musicPlaying, out bool Playing, out string musicPath)
-        {
-            Playing = musicPlaying;
-            musicPath = RegHelper.GetValue("MusicFile");
-
             try
             {
-                soundplayer.SoundLocation = musicPath;
-                soundplayer.PlayLooping();
+                while (!_stopRequested)
+                {
+                    var (processeslist, exists) = processUtils.CheckIfProcessExists(WWAHostState, FirstLogonAnimState, OOBEShellState);
+                    if (exists && !musicPlaying)
+                    {
+                        musicPath = RegHelper.GetValue("MusicFile").Replace("\"", string.Empty);
+                        musicPlaying = true;
+
+                        try
+                        {
+                            PlayAudioFile(musicPath);
+                            processLogsStrings = processUtils.ParseProcesses(processeslist);
+
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), processLogsStrings, musicPath), EventLogEntryType.Information);
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicCrash"), ex.Message), EventLogEntryType.Error);
+                        }
+                    }
+                    else if (!exists && musicPlaying)
+                    {
+                        musicPlaying = false;
+
+                        DisposeAudioPlayers();
+
+                        if (SuperVerboseLogs == 1)
+                        {
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings), EventLogEntryType.Information);
+                        }
+                        else
+                        {
+                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStopped"), processLogsStrings), EventLogEntryType.Information);
+                        }
+                    }
+
+                    Thread.Sleep(ThreadTimeout);
+                }
             }
             catch (Exception ex)
             {
-                if (SuperVerboseLogs == 1)
-                {
-                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicErrorVerbose"), ex.Message), EventLogEntryType.Error);
-                }
-                else
-                {
-                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicError"), ex.Message), EventLogEntryType.Error);
-                }
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("CriticalErrorInHookIntoWWA"), ex.Message), EventLogEntryType.Error);
+
+            }
+            finally
+            {
+                DisposeAudioPlayers();
             }
         }
 
-        private (List<string> processeslist, bool exists) Checkifprocessexists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
+        private void DisposeAudioPlayers()
         {
-            string wwahost = "WWAHost";
-            string firstbootanim = "FirstLogonAnim";
-            string oobehost = "OobeShellHost";
-
-            Process[] wwahostlist = Process.GetProcessesByName(wwahost);
-            Process[] firstlogonlist = Process.GetProcessesByName(firstbootanim);
-            Process[] oobehostlist = Process.GetProcessesByName(oobehost);
-
-            List<string> processeslists = new List<string>();
-
-            bool exists = false;
-
-            if (wwahostlist.Length > 0 && WWAHostSetting == 1)
+            try
             {
-
-                bool interrupted = CheckProcesses(wwahostlist);
-
-                if (!interrupted)
-                {
-                    processeslists.Add(wwahostlist[0].ProcessName);
-                    exists = true;
-                }
+                player?.Dispose();
             }
-
-            if (firstlogonlist.Length > 0 && FirstLogonSetting == 1)
+            catch (Exception ex)
             {
-
-                bool interrupted = CheckProcesses(firstlogonlist);
-
-                if (!interrupted)
-                {
-                    processeslists.Add(firstlogonlist[0].ProcessName);
-                    exists = true;
-                }
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ErrorReleasingAudioResources"), ex.Message), EventLogEntryType.Error);
 
             }
-
-            if (oobehostlist.Length > 0 && OobeShellSetting == 1)
-            {
-                bool interrupted = CheckProcesses(oobehostlist);
-                if (!interrupted)
-                {
-                    processeslists.Add(oobehostlist[0].ProcessName);
-                    exists = true;
-                }
-            }
-
-            return (processeslists, exists);
         }
 
-        static bool CheckProcesses(Process[] processes)
+        private void PlayAudioFile(string musicPath)
         {
-            foreach (Process process in processes)
-            {
-                bool isSuspended = process.Threads.Cast<ProcessThread>()
-                    .Any(thread => thread.ThreadState == System.Diagnostics.ThreadState.Wait && thread.WaitReason == ThreadWaitReason.Suspended);
-                if (!isSuspended)
-                {
-                    return false; // Si un processus n'est pas suspendu, retourne false
-                } //
-            }
-            return true; // Si tous les processus sont suspendus, retourne true
-        }
+            string extension = Path.GetExtension(musicPath).ToLowerInvariant();
 
+            // Déterminer l'API audio en fonction de l'extension
+            switch (extension)
+            {
+                case ".wav":
+                    player = new SoundPlayerClass();
+                    player.PlaySound(musicPath);
+                    break;
+
+                case ".brstm":
+                    using (var brstmPlayer = new BrstmPlayer())
+                    {
+                        using (var memoryStream = brstmPlayer.OpenBrstm(musicPath))
+                        {
+                            player = new SoundPlayerClass();
+                            player.PlaySound(memoryStream, brstmPlayer);
+                        }
+                    }
+                    break;
+
+                case ".at9":
+                    using (var at9Player = new At9Player())
+                    {
+                        using (var memoryStream = at9Player.OpenAt9(musicPath))
+                        {
+                            player = new SoundPlayerClass();
+                            player.PlaySound(memoryStream, at9Player);
+                        }
+                    }
+                    break;
+
+                case ".mp3":
+                    player = new NAudioClass();
+                    player.PlaySound(musicPath);
+                    break;
+
+                default:
+                    // Par défaut, utiliser NAudio pour les formats non pris en charge
+                    player = new NAudioClass();
+                    player.PlaySound(musicPath);
+                    break;
+            }
+        }
 
         protected override void OnStop()
         {
-
             _stopRequested = true;
 
             if (SuperVerboseLogs == 1)
@@ -267,8 +231,7 @@ namespace OOBEMusic
                 _HookThread.Join();
             }
 
-            player?.Stop();
-            player?.Dispose();
+            DisposeAudioPlayers();
 
             base.OnStop();
         }
