@@ -13,6 +13,6 @@ public interface IVGAudioPlayer : IDisposable
 public interface IAudioPlayer : IDisposable
 {
     void PlaySound(string filePath);
-    void PlaySound(MemoryStream memoryStream, IVGAudioPlayer audioPlayer);
+    void PlaySound(MemoryStream memoryStream);
     void StopAudioPlayback();
 }

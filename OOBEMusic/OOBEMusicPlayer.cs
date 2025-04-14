@@ -162,7 +162,6 @@ namespace OOBEMusic
             catch (Exception ex)
             {
                 Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ErrorReleasingAudioResources"), ex.Message), EventLogEntryType.Error);
-
             }
         }
 
@@ -184,7 +183,7 @@ namespace OOBEMusic
                         using (var memoryStream = brstmPlayer.OpenBrstm(musicPath))
                         {
                             player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream, brstmPlayer);
+                            player.PlaySound(memoryStream);
                         }
                     }
                     break;
@@ -195,7 +194,7 @@ namespace OOBEMusic
                         using (var memoryStream = at9Player.OpenAt9(musicPath))
                         {
                             player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream, at9Player);
+                            player.PlaySound(memoryStream);
                         }
                     }
                     break;
