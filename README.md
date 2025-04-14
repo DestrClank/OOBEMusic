@@ -117,4 +117,5 @@ You can use these 3 keys described earlier and set them as `0` to completely dis
 # More details
 - Uses .NET Framework 4.8.
 - "Windows Welcome Music" by Stan LePard.
+- Uses vgmstream by HCS (https://vgmstream.org/)
 - The program saves execution logs into the Event Viewer, and they are translated in French, Spanish, English, German, Italian.
