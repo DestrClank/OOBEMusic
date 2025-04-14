@@ -222,4 +222,76 @@
   <data name="RegistryKeyCreationError" xml:space="preserve">
     <value>Si è verificato un errore durante la creazione della chiave di registro 'MusicFile'. Errore: {0}</value>
   </data>
+  <data name="MusicCrash" xml:space="preserve">
+    <value>Si è verificato un errore che impedisce la riproduzione del file musicale. Codice errore: {0}</value>
+  </data>
+  <data name="FileDoesntExist" xml:space="preserve">
+    <value>Il file specificato non esiste.</value>
+  </data>
+  <data name="CriticalErrorInHookIntoWWA" xml:space="preserve">
+    <value>Errore critico in HookIntoWWA: {0}</value>
+  </data>
+  <data name="ErrorReleasingAudioResources" xml:space="preserve">
+    <value>Errore durante il rilascio delle risorse audio: {0}</value>
+  </data>
+  <data name="ObjectDisposedAt9Player" xml:space="preserve">
+    <value>L'oggetto At9Player è già stato eliminato.</value>
+  </data>
+  <data name="FileNotFoundAt9" xml:space="preserve">
+    <value>Il file AT9 specificato non è stato trovato.</value>
+  </data>
+  <data name="ErrorOpeningAt9File" xml:space="preserve">
+    <value>Errore durante l'apertura del file AT9: {0}</value>
+  </data>
+  <data name="ObjectDisposedSoundPlayer" xml:space="preserve">
+    <value>L'oggetto SoundPlayerClass è già stato eliminato.</value>
+  </data>
+  <data name="AudioPathNullOrEmpty" xml:space="preserve">
+    <value>Il percorso del file audio non può essere vuoto o nullo.</value>
+  </data>
+  <data name="MemoryStreamNull" xml:space="preserve">
+    <value>Il flusso di memoria non può essere nullo.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlayback" xml:space="preserve">
+    <value>Errore durante l'arresto della riproduzione audio: {0}</value>
+  </data>
+  <data name="SoundPlayerResourceReleased" xml:space="preserve">
+    <value>La risorsa 'SoundPlayer' è stata rilasciata.</value>
+  </data>
+  <data name="ObjectDisposedNAudio" xml:space="preserve">
+    <value>L'oggetto NAudioClass è già stato eliminato.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlaybackNAudio" xml:space="preserve">
+    <value>Errore durante l'arresto della riproduzione audio: {0}</value>
+  </data>
+  <data name="OutputDeviceResourceReleased" xml:space="preserve">
+    <value>La risorsa 'outputDevice' è stata rilasciata.</value>
+  </data>
+  <data name="AudioFileResourceReleased" xml:space="preserve">
+    <value>La risorsa 'audioFile' è stata rilasciata.</value>
+  </data>
+  <data name="ObjectDisposedBrstmPlayer" xml:space="preserve">
+    <value>L'oggetto BrstmPlayer è già stato eliminato.</value>
+  </data>
+  <data name="FileNotFoundBrstm" xml:space="preserve">
+    <value>Il file BRSTM specificato non è stato trovato.</value>
+  </data>
+  <data name="ErrorOpeningBrstmFile" xml:space="preserve">
+    <value>Errore durante l'apertura del file BRSTM: {0}</value>
+  </data>
+  <data name="BrstmPlayerResourceReleased" xml:space="preserve">
+    <value>La risorsa 'BrstmPlayer' è stata rilasciata.</value>
+  </data>
+  <data name="At9PlayerResourceReleased" xml:space="preserve">
+    <value>La risorsa 'At9Player' è stata rilasciata.</value>
+  </data>
+  <data name="NAudioResourceReleased" xml:space="preserve">
+    <value>La risorsa 'NAudio' è stata rilasciata.</value>
+  </data>
+  <data name="ServiceInteractiveDebugMode" xml:space="preserve">
+    <value>Servizio in esecuzione in modalità interattiva di debug.</value>
+  </data>
+  <data name="CannotRunInConsoleMode" xml:space="preserve">
+    <value>OOBEMusic.exe non può essere eseguito in modalità console.</value>
+  </data>
 </root>

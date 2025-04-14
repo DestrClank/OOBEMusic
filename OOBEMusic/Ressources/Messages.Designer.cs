@@ -70,11 +70,137 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The AT9 ressources has been disposed..
+        /// </summary>
+        internal static string At9PlayerResourceReleased {
+            get {
+                return ResourceManager.GetString("At9PlayerResourceReleased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The &apos;audioFile&apos; resource has been released..
+        /// </summary>
+        internal static string AudioFileResourceReleased {
+            get {
+                return ResourceManager.GetString("AudioFileResourceReleased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The audio file path cannot be null or empty..
+        /// </summary>
+        internal static string AudioPathNullOrEmpty {
+            get {
+                return ResourceManager.GetString("AudioPathNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The BRSTM ressources has been disposed..
+        /// </summary>
+        internal static string BrstmPlayerResourceReleased {
+            get {
+                return ResourceManager.GetString("BrstmPlayerResourceReleased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à OOBEMusic.exe cannot be run in console mode..
+        /// </summary>
+        internal static string CannotRunInConsoleMode {
+            get {
+                return ResourceManager.GetString("CannotRunInConsoleMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Critical error in HookIntoWWA: {0}.
+        /// </summary>
+        internal static string CriticalErrorInHookIntoWWA {
+            get {
+                return ResourceManager.GetString("CriticalErrorInHookIntoWWA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Can&apos;t log in event viewer because of an error. Error code : {0}.
         /// </summary>
         internal static string ErrorCantLogInEventViewer {
             get {
                 return ResourceManager.GetString("ErrorCantLogInEventViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error while opening the AT9 file: {0}.
+        /// </summary>
+        internal static string ErrorOpeningAt9File {
+            get {
+                return ResourceManager.GetString("ErrorOpeningAt9File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error while opening the BRSTM file: {0}.
+        /// </summary>
+        internal static string ErrorOpeningBrstmFile {
+            get {
+                return ResourceManager.GetString("ErrorOpeningBrstmFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error releasing audio resources: {0}.
+        /// </summary>
+        internal static string ErrorReleasingAudioResources {
+            get {
+                return ResourceManager.GetString("ErrorReleasingAudioResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error while stopping audio playback: {0}.
+        /// </summary>
+        internal static string ErrorStoppingAudioPlayback {
+            get {
+                return ResourceManager.GetString("ErrorStoppingAudioPlayback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error while stopping audio playback: {0}.
+        /// </summary>
+        internal static string ErrorStoppingAudioPlaybackNAudio {
+            get {
+                return ResourceManager.GetString("ErrorStoppingAudioPlaybackNAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The file specified doesn&apos;t exist..
+        /// </summary>
+        internal static string FileDoesntExist {
+            get {
+                return ResourceManager.GetString("FileDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified AT9 file could not be found..
+        /// </summary>
+        internal static string FileNotFoundAt9 {
+            get {
+                return ResourceManager.GetString("FileNotFoundAt9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified BRSTM file could not be found..
+        /// </summary>
+        internal static string FileNotFoundBrstm {
+            get {
+                return ResourceManager.GetString("FileNotFoundBrstm", resourceCulture);
             }
         }
         
@@ -120,6 +246,24 @@ namespace OOBEMusic.Ressources {
         internal static string KeyNotFoundMessage {
             get {
                 return ResourceManager.GetString("KeyNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The memory stream cannot be null..
+        /// </summary>
+        internal static string MemoryStreamNull {
+            get {
+                return ResourceManager.GetString("MemoryStreamNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error is preventing the music file to be played. Error code : {0}.
+        /// </summary>
+        internal static string MusicCrash {
+            get {
+                return ResourceManager.GetString("MusicCrash", resourceCulture);
             }
         }
         
@@ -178,6 +322,60 @@ namespace OOBEMusic.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The &apos;NAudio&apos; resource has been released..
+        /// </summary>
+        internal static string NAudioResourceReleased {
+            get {
+                return ResourceManager.GetString("NAudioResourceReleased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The At9Player object has already been disposed..
+        /// </summary>
+        internal static string ObjectDisposedAt9Player {
+            get {
+                return ResourceManager.GetString("ObjectDisposedAt9Player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The BrstmPlayer object has already been disposed..
+        /// </summary>
+        internal static string ObjectDisposedBrstmPlayer {
+            get {
+                return ResourceManager.GetString("ObjectDisposedBrstmPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The NAudioClass object has already been disposed..
+        /// </summary>
+        internal static string ObjectDisposedNAudio {
+            get {
+                return ResourceManager.GetString("ObjectDisposedNAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The SoundPlayerClass object has already been disposed..
+        /// </summary>
+        internal static string ObjectDisposedSoundPlayer {
+            get {
+                return ResourceManager.GetString("ObjectDisposedSoundPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The &apos;outputDevice&apos; resource has been released..
+        /// </summary>
+        internal static string OutputDeviceResourceReleased {
+            get {
+                return ResourceManager.GetString("OutputDeviceResourceReleased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The registry key has been created..
         /// </summary>
         internal static string RegistryCreatedMessage {
@@ -219,6 +417,15 @@ namespace OOBEMusic.Ressources {
         internal static string ServiceDescription {
             get {
                 return ResourceManager.GetString("ServiceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Service running in interactive debugging mode..
+        /// </summary>
+        internal static string ServiceInteractiveDebugMode {
+            get {
+                return ResourceManager.GetString("ServiceInteractiveDebugMode", resourceCulture);
             }
         }
         
@@ -318,6 +525,15 @@ namespace OOBEMusic.Ressources {
         internal static string ServiceUninstallError {
             get {
                 return ResourceManager.GetString("ServiceUninstallError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The &apos;SoundPlayer&apos; resource has been released..
+        /// </summary>
+        internal static string SoundPlayerResourceReleased {
+            get {
+                return ResourceManager.GetString("SoundPlayerResourceReleased", resourceCulture);
             }
         }
         

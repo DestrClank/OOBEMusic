@@ -1,0 +1,57 @@
+﻿
+Exécution d'une installation traitée avec transaction.
+
+Début de la phase d'installation de l'installation.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+Une exception s'est produite lors de la phase d'installation.
+System.InvalidOperationException: Une exception s'est produite dans le gestionnaire d'événements OnAfterInstall de System.ServiceProcess.ServiceInstaller.
+L'exception interne System.InvalidOperationException a été levée avec le message d'erreur suivant : Impossible de démarrer le service OOBEMusic sur l'ordinateur '.'..
+L'exception interne System.ComponentModel.Win32Exception a été levée avec le message d'erreur suivant : Accès refusé.
+
+La phase de restauration de l'installation a commencé.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+La phase de restauration est terminée.
+
+L'installation traitée avec transaction est terminée.
+
+Exécution d'une installation traitée avec transaction.
+
+Début de la phase d'installation de l'installation.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+Une exception s'est produite lors de la phase d'installation.
+System.InvalidOperationException: Une exception s'est produite dans le gestionnaire d'événements OnAfterInstall de System.ServiceProcess.ServiceInstaller.
+L'exception interne System.InvalidOperationException a été levée avec le message d'erreur suivant : Impossible de démarrer le service OOBEMusic sur l'ordinateur '.'..
+L'exception interne System.ComponentModel.Win32Exception a été levée avec le message d'erreur suivant : Accès refusé.
+
+La phase de restauration de l'installation a commencé.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+La phase de restauration est terminée.
+
+L'installation traitée avec transaction est terminée.
+
+Exécution d'une installation traitée avec transaction.
+
+Début de la phase d'installation de l'installation.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+Une exception s'est produite lors de la phase d'installation.
+System.InvalidOperationException: Une exception s'est produite dans le gestionnaire d'événements OnAfterInstall de System.ServiceProcess.ServiceInstaller.
+L'exception interne System.InvalidOperationException a été levée avec le message d'erreur suivant : Impossible de démarrer le service OOBEMusic sur l'ordinateur '.'..
+L'exception interne System.ComponentModel.Win32Exception a été levée avec le message d'erreur suivant : Accès refusé.
+
+La phase de restauration de l'installation a commencé.
+Consultez le contenu du fichier journal pour l'avancement de l'assembly C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.exe.
+Le fichier se trouve à C:\Users\dylan\source\repos\OOBEMusic\OOBEMusic\bin\Debug\OOBEMusic.InstallLog.
+
+La phase de restauration est terminée.
+
+L'installation traitée avec transaction est terminée.

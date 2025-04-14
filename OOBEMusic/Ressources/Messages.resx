@@ -222,4 +222,76 @@
   <data name="RegistryKeyCreationError" xml:space="preserve">
     <value>An error occurred while creating the registry key 'MusicFile'. Error: {0}</value>
   </data>
+  <data name="MusicCrash" xml:space="preserve">
+    <value>An error is preventing the music file to be played. Error code : {0}</value>
+  </data>
+  <data name="FileDoesntExist" xml:space="preserve">
+    <value>The file specified doesn't exist.</value>
+  </data>
+  <data name="CriticalErrorInHookIntoWWA" xml:space="preserve">
+    <value>Critical error in HookIntoWWA: {0}</value>
+  </data>
+  <data name="ErrorReleasingAudioResources" xml:space="preserve">
+    <value>Error releasing audio resources: {0}</value>
+  </data>
+  <data name="ObjectDisposedAt9Player" xml:space="preserve">
+    <value>The At9Player object has already been disposed.</value>
+  </data>
+  <data name="FileNotFoundAt9" xml:space="preserve">
+    <value>The specified AT9 file could not be found.</value>
+  </data>
+  <data name="ErrorOpeningAt9File" xml:space="preserve">
+    <value>Error while opening the AT9 file: {0}</value>
+  </data>
+  <data name="ObjectDisposedSoundPlayer" xml:space="preserve">
+    <value>The SoundPlayerClass object has already been disposed.</value>
+  </data>
+  <data name="AudioPathNullOrEmpty" xml:space="preserve">
+    <value>The audio file path cannot be null or empty.</value>
+  </data>
+  <data name="MemoryStreamNull" xml:space="preserve">
+    <value>The memory stream cannot be null.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlayback" xml:space="preserve">
+    <value>Error while stopping audio playback: {0}</value>
+  </data>
+  <data name="SoundPlayerResourceReleased" xml:space="preserve">
+    <value>The 'SoundPlayer' resource has been released.</value>
+  </data>
+  <data name="ObjectDisposedNAudio" xml:space="preserve">
+    <value>The NAudioClass object has already been disposed.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlaybackNAudio" xml:space="preserve">
+    <value>Error while stopping audio playback: {0}</value>
+  </data>
+  <data name="OutputDeviceResourceReleased" xml:space="preserve">
+    <value>The 'outputDevice' resource has been released.</value>
+  </data>
+  <data name="AudioFileResourceReleased" xml:space="preserve">
+    <value>The 'audioFile' resource has been released.</value>
+  </data>
+  <data name="ObjectDisposedBrstmPlayer" xml:space="preserve">
+    <value>The BrstmPlayer object has already been disposed.</value>
+  </data>
+  <data name="FileNotFoundBrstm" xml:space="preserve">
+    <value>The specified BRSTM file could not be found.</value>
+  </data>
+  <data name="ErrorOpeningBrstmFile" xml:space="preserve">
+    <value>Error while opening the BRSTM file: {0}</value>
+  </data>
+  <data name="BrstmPlayerResourceReleased" xml:space="preserve">
+    <value>The BRSTM ressources has been disposed.</value>
+  </data>
+  <data name="At9PlayerResourceReleased" xml:space="preserve">
+    <value>The AT9 ressources has been disposed.</value>
+  </data>
+  <data name="NAudioResourceReleased" xml:space="preserve">
+    <value>The 'NAudio' resource has been released.</value>
+  </data>
+  <data name="ServiceInteractiveDebugMode" xml:space="preserve">
+    <value>Service running in interactive debugging mode.</value>
+  </data>
+  <data name="CannotRunInConsoleMode" xml:space="preserve">
+    <value>OOBEMusic.exe cannot be run in console mode.</value>
+  </data>
 </root>
