@@ -41,7 +41,7 @@ namespace OOBEMusicSetup
             WWAHostCheck.Checked = WWAHostState == 1;
             firstLogonCheck.Checked = FirstLogonAnimState == 1;
             OOBEHostAppCheck.Checked = OOBEShellState == 1;
-            superVerboseCheck.Checked = SuperVerboseLogs == 1;
+            superVerboseCheck.Checked = SuperVerboseLogs == 0;
 
             // Check if the thread timeout value is less than 100ms
             if (ThreadTimeout < 100)
