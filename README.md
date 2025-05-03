@@ -39,11 +39,14 @@ The program will be automatically started upon installation and good to go !
 13. Normally, when Windows reboots, the installation phase will play the music ! Congratulations and enjoy !
    - If nothing is playing, no panic ! You can go back to the audit mode by pressing `Ctrl + Shift + F3` and try again !
    - Sometimes, the service starts very late because of Windows, maybe too late at this point, you can alternatively reboot the computer by pressing the power button.
-   - Verify that you have a music file encoded in `.wav` format and present into `C:\OOBEMusic` !
+   - (Before 1.0.2) Verify that you have a music file encoded in `.wav` format and present into `C:\OOBEMusic` !
 
 # Customization
 You can change the default music that plays when the OOBE starts. But there is requirements for the music file.
-- The music file has to be in .wav format for it to work into the program. You can use any converters like ffmpeg to convert your file into .wav file.
+- (Before 1.0.2) The music file has to be in .wav format for it to work into the program. You can use any converters like ffmpeg to convert your file into .wav file.
+- (After 1.0.2) The music file could be .mp3, .wav, .at9, .brstm, or any other video game music file supported by vgmstream.
+  - Note : Use .mp3 for lightweight processing.
+  - 1.0.3 adds vgmstream to read multiple video games music formats.
 
 To change the music you have 2 ways :
 - Note : you have to do this into the audit mode **BEFORE** completing the OOBE phase !
@@ -55,7 +58,7 @@ To change the music you have 2 ways :
 4. Go into Windows Explorer and locate where your .wav file is located.
    - In Windows 11, right-click on the file and select `Copy path location`
    - In Windows 10, while maintaining the Shift key, right-click on the file and select `Copy path location`
-5. Now with your path into the clipboard, modify the registry key `MusicFile` and replace the default one with the one you want. Remove the quotations marks if there is any.
+5. Now with your path into the clipboard, modify the registry key `MusicFile` and replace the default one with the one you want.
 6. Go into Task Manager and go into the Services tab.
 7. Search for OOBEMusic and click on it. Right-click and select `Restart`. This will restart the program.
 8. Do the steps for step 9 in the installation's guide to reboot into OOBE.
@@ -71,6 +74,7 @@ To change the music you have 2 ways :
 1. Locate where the OOBE Music Player program is installed on your computer. Usally it's in `C:\Program Files (x86)\DestrClank Studios\OOBE Music Player\`
 2. Rename your .wav file to `music.wav`.
 3. Put your music.wav file into the folder, Windows Explorer will tell you to replace the file or to make a copy, select "Replace" and accept the administrative privileges.
+   - Note : the file needs to be a .wav RIFF file in order to work properly, if you want to use an other format, use the [Registry Key](#via-registry-editor) method instead.
 
 # How it works
 The program analyses if one of these three processes are running to determine when to play the music.
@@ -117,4 +121,5 @@ You can use these 3 keys described earlier and set them as `0` to completely dis
 # More details
 - Uses .NET Framework 4.8.
 - "Windows Welcome Music" by Stan LePard.
+- Uses vgmstream by HCS (https://vgmstream.org/)
 - The program saves execution logs into the Event Viewer, and they are translated in French, Spanish, English, German, Italian.
