@@ -118,6 +118,15 @@ For these keys, you have to make them into `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432N
 ### Disable the service with registry
 You can use these 3 keys described earlier and set them as `0` to completely disable the service. In this case, the service will automatically close, freeing some RAM in the process.
 
+# The control panel
+With version 1.0.4, you can use the `OOBE Music Player Setup` program installed alongside the service. You can use this program to select the music file you want to play, or manage the settings and the service.
+
+- Music File : shows the current music file path used by the service. By default, it uses `C:\Program Files (x86)\DestrClank Studios\OOBE Music Player\music.wav`. You can change it by pressing the "Select" button, then by choosing your file with the file explorer window.
+- Music Playback category : check or uncheck to enable or disable the music playback during different phases of the OOBE.
+- Thread Timeout : you can change how frequently the service checks if any processes is running. Uses a value between 100 and 5000 milliseconds.
+- Service Control : here you can restart the service, close it, disable it and start it. For troubleshooting, you have a shortcut to the Event Viewer, where the service logs every steps.
+  - Note : if you changed any of the settings, you can press `Restart Service` to restart the service and apply the settings.
+
 # More details
 - Uses .NET Framework 4.8.
 - "Windows Welcome Music" by Stan LePard.
