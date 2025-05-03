@@ -125,6 +125,7 @@ With version 1.0.4, you can use the `OOBE Music Player Setup` program installed 
 - Music Playback category : check or uncheck to enable or disable the music playback during different phases of the OOBE.
 - Thread Timeout : you can change how frequently the service checks if any processes is running. Uses a value between 100 and 5000 milliseconds.
 - Service Control : here you can restart the service, close it, disable it and start it. For troubleshooting, you have a shortcut to the Event Viewer, where the service logs every steps.
+- Test Application : it will open a process called WWAHost.exe. Useful if you want to test if your music works correctly.
   - Note : if you changed any of the settings, you can press `Restart Service` to restart the service and apply the settings.
 
 # More details
