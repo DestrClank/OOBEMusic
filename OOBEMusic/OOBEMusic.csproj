@@ -112,6 +112,7 @@
     <Compile Include="AudioPlayers\NAudio.cs" />
     <Compile Include="AudioPlayers\SoundPlayer.cs" />
     <Compile Include="Utils\AudioApi.cs" />
+    <Compile Include="Utils\ServiceHelper.cs" />
     <Compile Include="Utils\ProcessUtils.cs" />
     <Compile Include="Utils\LoopAudio.cs" />
     <Compile Include="Ressources\Messages.Designer.cs">
@@ -245,7 +246,7 @@
   <ItemGroup>
     <Content Include="Libs\*\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content> 
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting">

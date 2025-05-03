@@ -125,6 +125,47 @@ namespace OOBEMusic
             return value;
         }
 
+        // Write keys to the registry
+        public static void WriteKey(string name, int value)
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, true))
+            {
+                try
+                {
+                    key.SetValue(name, value, RegistryValueKind.DWord);
+                }
+                catch (Exception ex)
+                {
+                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("WriteKeyError"), ex.Message), EventLogEntryType.Error);
+                }
+                finally
+                {
+                    key.Close();
+                    key.Dispose();
+                }
+            }
+        }
+
+        public static void WriteKey(string name, string value)
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, true))
+            {
+                try
+                {
+                    key.SetValue(name, value, RegistryValueKind.String);
+                }
+                catch (Exception ex)
+                {
+                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("WriteKeyError"), ex.Message), EventLogEntryType.Error);
+                }
+                finally
+                {
+                    key.Close();
+                    key.Dispose();
+                }
+            }
+        }
+
         public static int CheckActivationState(string name, int defaultvalue = 1, bool logEnabled = true)
         {
             int Active = defaultvalue;
