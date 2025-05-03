@@ -669,6 +669,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_48B16EC660C04DAD98B6E3999D97EC60"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4ADB8E5DA629C4CCDF8B88FFD00277DD"
         "OwnerKey" = "8:_3175C25F240148D69BA3A066FC51E116"
         "MsmSig" = "8:_UNDEFINED"
@@ -2092,6 +2098,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E20923579D1885D3967AEBE05EE97EFD"
+        "OwnerKey" = "8:_48B16EC660C04DAD98B6E3999D97EC60"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E20923579D1885D3967AEBE05EE97EFD"
         "OwnerKey" = "8:_346D655F0B63423AB98900679EDB9E86"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2350,19 +2362,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_48B16EC660C04DAD98B6E3999D97EC60"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_346D655F0B63423AB98900679EDB9E86"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D2796A25BFC1821EA5A4C5BF9EF97539"
+        "OwnerKey" = "8:_79EC0CC34DF1F7157024DFB5B6638647"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_79EC0CC34DF1F7157024DFB5B6638647"
+        "OwnerKey" = "8:_D2796A25BFC1821EA5A4C5BF9EF97539"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -7748,7 +7766,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OOBEMusic, Version=1.0.0.3, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:OOBEMusic, Version=1.0.4.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_D2796A25BFC1821EA5A4C5BF9EF97539"
@@ -9437,6 +9455,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{21B5C7C5-7824-4A15-8D1E-FEAE23746B83}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_48B16EC660C04DAD98B6E3999D97EC60"
+            {
+            "SourcePath" = "8:..\\WWAHostTestApp\\obj\\Release\\WWAHost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B75E9E63EEA4425E97E518D61E97CA2C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{324756D8-3CC6-4E6B-B9D2-6F5C4AD0FE78}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
