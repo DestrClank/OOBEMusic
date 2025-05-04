@@ -30,6 +30,7 @@ namespace OOBEMusicSetup
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.fileSelectButton = new System.Windows.Forms.Button();
@@ -342,6 +343,7 @@ namespace OOBEMusicSetup
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(678, 403);
             this.Name = "Form1";
             this.Text = "OOBE Music Player Setup";
