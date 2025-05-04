@@ -87,6 +87,40 @@ namespace OOBEMusicSetup
             }
         }
 
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("DragEnter event triggered"); // Debug line
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Link;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); // Récupère les fichiers déposés
+
+                if (files.Length > 1)
+                {
+                    MessageBox.Show("Veuillez déposer un seul fichier.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Annule l'action si plusieurs fichiers sont déposés
+                }
+
+                string file = files[0]; // Récupère le seul fichier déposé
+                MessageBox.Show($"Fichier déposé : {file}", "Drag and Drop", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Ajoutez ici le traitement du fichier (par exemple, l'afficher dans un TextBox)
+                filePathBox.Text = file;
+                RegHelper.WriteKey("MusicFile", "\"" + file + "\"");
+            }
+        }
+
         private void WWAHostCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (WWAHostCheck.Checked)
@@ -340,7 +374,7 @@ namespace OOBEMusicSetup
                     {
                         if (stopwatch.ElapsedMilliseconds > 5000)
                         {
-                            MessageBox.Show("Le service n'a pas pu démarrer dans les 5 secondes.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The service failed to restart in a timely fashion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         System.Threading.Thread.Sleep(100);
@@ -367,6 +401,72 @@ namespace OOBEMusicSetup
             {
                 Process.Start("WWAHost.exe");
             } else { MessageBox.Show("WWAHost.exe not found in the current directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DialogResult response = MessageBox.Show("Are you sure you want to reset the registry keys?", "Reset Registry Keys", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (response == DialogResult.Yes)
+            {
+                try
+                {
+                    RegHelper.ResetRegistryKeys();
+                    // Reset the checkboxes to their default state
+
+                    WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
+                    FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
+                    OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
+                    SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName);
+                    ThreadTimeout = RegHelper.CheckThreadTimeout();
+
+                    WWAHostCheck.Checked = WWAHostState == 1;
+                    firstLogonCheck.Checked = FirstLogonAnimState == 1;
+                    OOBEHostAppCheck.Checked = OOBEShellState == 1;
+                    superVerboseCheck.Checked = SuperVerboseLogs == 0;
+                    threadTimeoutNumber.Value = ThreadTimeout;
+
+                    if (serviceState == ServiceControllerStatus.Running)
+                    {
+                        ServiceHelper.RestartService(servicename);
+
+                        // Wait for the service to restart  
+                        var stopwatch = Stopwatch.StartNew();
+                        while (ServiceHelper.GetServiceStatus(servicename) != ServiceControllerStatus.Running)
+                        {
+                            if (stopwatch.ElapsedMilliseconds > 5000)
+                            {
+                                MessageBox.Show("The service failed to restart in a timely fashion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            System.Threading.Thread.Sleep(100);
+                        }
+
+                        serviceStatusLabel.Text = "Service is running";
+                        serviceStatusLabel.ForeColor = Color.Green;
+                    }
+
+                    musicPath = RegHelper.GetValue("MusicFile").Replace("\"", string.Empty);
+                    filePathBox.Text = musicPath;
+
+                    MessageBox.Show("Registry keys reset successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error resetting registry keys: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Ajoutez une méthode utilitaire pour convertir les valeurs 0 et 1 en booléens.
+        private bool ConvertToBool(int value)
+        {
+            return value == 1;
+        }
+
+        // Ajoutez une méthode utilitaire pour convertir les booléens en valeurs 0 et 1.
+        private int ConvertToInt(bool value)
+        {
+            return value ? 1 : 0;
         }
     }
 }
