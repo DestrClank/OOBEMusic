@@ -146,6 +146,34 @@ namespace OOBEMusic
             }
         }
 
+        public static void ResetRegistryKeys()
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, true))
+            {
+                try
+                {
+                    if (key != null)
+                    {
+                        key.DeleteValue("MusicFile", false);
+                        key.DeleteValue("ThreadTimeout", false);
+                        key.DeleteValue("ActivateWWAHostMusic", false);
+                        key.DeleteValue("ActivateFirstLogonMusic");
+                        key.DeleteValue("ActivateOOBEHostMusic", false);
+                        key.DeleteValue("EnableSuperVerboseLogs", false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ResetKeysError"), ex.Message), EventLogEntryType.Error);
+                }
+                finally
+                {
+                    key.Close();
+                    key.Dispose();
+                }
+            }
+        }
+
         public static void WriteKey(string name, string value)
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyName, true))
