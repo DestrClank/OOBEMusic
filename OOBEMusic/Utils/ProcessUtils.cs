@@ -9,6 +9,14 @@ namespace OOBEMusic.Utils
 {
     public class ProcessUtils
     {
+        public Dictionary<string, (string, int)> processes = new Dictionary<string, (string, int)>
+        {
+            { "WWAHost", ("ActivateWWAHostMusic", RegHelper.CheckActivationState("ActivateWWAHostMusic")) },
+            { "OobeShellHost", ("ActivateOOBEHostMusic", RegHelper.CheckActivationState("ActivateOOBEHostMusic")) },
+            { "FirstLogonAnim", ("ActivateFirstLogonMusic" , RegHelper.CheckActivationState("ActivateFirstLogonMusic")) },
+            { "windeploy", ("ActivateWinDeployMusic" , RegHelper.CheckActivationState("ActivateWinDeployMusic")) }
+        };
+
         public string ParseProcesses(List<string> processeslist)
         {
             string processLogsStrings = string.Empty;
@@ -28,56 +36,43 @@ namespace OOBEMusic.Utils
             return processLogsStrings;
         }
 
-        public (List<string> processeslist, bool exists) CheckIfProcessExists(int WWAHostSetting, int FirstLogonSetting, int OobeShellSetting)
+        public (List<string> processeslist, bool exists) CheckIfProcessExists()
         {
-            string wwahost = "WWAHost";
-            string firstbootanim = "FirstLogonAnim";
-            string oobehost = "OobeShellHost";
-
-            Process[] wwahostlist = Process.GetProcessesByName(wwahost);
-            Process[] firstlogonlist = Process.GetProcessesByName(firstbootanim);
-            Process[] oobehostlist = Process.GetProcessesByName(oobehost);
+            // Correction 1: Use KeyValuePair<string, int> in the foreach loop
 
             List<string> processeslists = new List<string>();
 
-            bool exists = false;
-
-            if (wwahostlist.Length > 0 && WWAHostSetting == 1)
+            // Correction 2: Iterate over KeyValuePair<string, int>
+            foreach (KeyValuePair<string, (string, int)> processName in processes)
             {
+                // Correction 3: Use processName.Key to get the process name
+                Process[] process = Process.GetProcessesByName(processName.Key);
 
-                bool interrupted = CheckProcesses(wwahostlist);
+                bool interrupted = CheckProcesses(process);
 
                 if (!interrupted)
                 {
-                    processeslists.Add(wwahostlist[0].ProcessName);
-                    exists = true;
+                    if (process.Length > 0 && processName.Value.Item2 == 1)
+                    {
+                        processeslists.Add(process[0].ProcessName);
+                        return (processeslists, true);
+                    }
                 }
             }
 
-            if (firstlogonlist.Length > 0 && FirstLogonSetting == 1)
+            return (processeslists, false);
+        }
+
+        public bool CheckIfAnyOptionIsEnabled()
+        {
+            foreach (KeyValuePair<string, (string, int)> processName in processes)
             {
-
-                bool interrupted = CheckProcesses(firstlogonlist);
-
-                if (!interrupted)
+                if (processName.Value.Item2 == 1)
                 {
-                    processeslists.Add(firstlogonlist[0].ProcessName);
-                    exists = true;
-                }
-
-            }
-
-            if (oobehostlist.Length > 0 && OobeShellSetting == 1)
-            {
-                bool interrupted = CheckProcesses(oobehostlist);
-                if (!interrupted)
-                {
-                    processeslists.Add(oobehostlist[0].ProcessName);
-                    exists = true;
+                    return true; // Si au moins une option est activée, retourne true
                 }
             }
-
-            return (processeslists, exists);
+            return false; // Si aucune option n'est activée, retourne false
         }
 
         public static bool CheckProcesses(Process[] processes)

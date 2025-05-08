@@ -54,6 +54,7 @@ namespace OOBEMusicSetup
             this.disableServiceButton = new System.Windows.Forms.Button();
             this.stopServiceButton = new System.Windows.Forms.Button();
             this.restartServiceButton = new System.Windows.Forms.Button();
+            this.windeployCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -110,13 +111,14 @@ namespace OOBEMusicSetup
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.windeployCheckbox);
             this.groupBox2.Controls.Add(this.superVerboseCheck);
             this.groupBox2.Controls.Add(this.OOBEHostAppCheck);
             this.groupBox2.Controls.Add(this.WWAHostCheck);
             this.groupBox2.Controls.Add(this.firstLogonCheck);
             this.groupBox2.Location = new System.Drawing.Point(13, 86);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(637, 114);
+            this.groupBox2.Size = new System.Drawing.Size(637, 135);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Music Playback";
@@ -172,7 +174,7 @@ namespace OOBEMusicSetup
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.threadTimeoutNumber);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(13, 206);
+            this.groupBox3.Location = new System.Drawing.Point(13, 227);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(637, 65);
             this.groupBox3.TabIndex = 2;
@@ -233,7 +235,7 @@ namespace OOBEMusicSetup
             this.groupBox4.Controls.Add(this.disableServiceButton);
             this.groupBox4.Controls.Add(this.stopServiceButton);
             this.groupBox4.Controls.Add(this.restartServiceButton);
-            this.groupBox4.Location = new System.Drawing.Point(13, 277);
+            this.groupBox4.Location = new System.Drawing.Point(13, 298);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(637, 75);
             this.groupBox4.TabIndex = 3;
@@ -333,18 +335,31 @@ namespace OOBEMusicSetup
             this.restartServiceButton.UseVisualStyleBackColor = true;
             this.restartServiceButton.Click += new System.EventHandler(this.restartServiceButton_Click);
             // 
+            // windeployCheckbox
+            // 
+            this.windeployCheckbox.AutoSize = true;
+            this.windeployCheckbox.Location = new System.Drawing.Point(10, 113);
+            this.windeployCheckbox.Name = "windeployCheckbox";
+            this.windeployCheckbox.Size = new System.Drawing.Size(269, 17);
+            this.windeployCheckbox.TabIndex = 4;
+            this.windeployCheckbox.Text = "Enable playback when \"windeploy.exe\" is detected";
+            this.windeployCheckbox.UseVisualStyleBackColor = true;
+            this.windeployCheckbox.CheckedChanged += new System.EventHandler(this.windeployCheckbox_CheckedChanged);
+            // 
             // Form1
             // 
+            this.AcceptButton = this.button1;
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 364);
+            this.ClientSize = new System.Drawing.Size(662, 400);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(678, 403);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(678, 439);
             this.Name = "Form1";
             this.Text = "OOBE Music Player Setup";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
@@ -387,7 +402,7 @@ namespace OOBEMusicSetup
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-
+        private CheckBox windeployCheckbox;
     }
 }
 

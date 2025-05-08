@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioPlayers\AudioDeviceWatcher.cs" />
     <Compile Include="AudioPlayers\BrstmPlayer.cs" />
     <Compile Include="AudioPlayers\At9Player.cs" />
     <Compile Include="AudioPlayers\AudioPlayersInterface.cs" />

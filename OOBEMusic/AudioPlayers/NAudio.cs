@@ -12,6 +12,22 @@ public class NAudioClass : IAudioPlayer
     private AudioFileReader audioFile;
     private bool disposed = false;
 
+    private AudioDeviceWatcher deviceWatcher;
+
+    public NAudioClass()
+    {
+        deviceWatcher = new AudioDeviceWatcher();
+        deviceWatcher.DefaultAudioDeviceChanged += OnAudioDeviceChanged;
+    }
+
+    private void OnAudioDeviceChanged()
+    {
+        // Log the event of audio device change
+        outputDevice?.Stop();
+        outputDevice?.Play();
+        Logging.EventLogger.LogToEventViewer(rm.GetString("AudioDeviceChanged"), EventLogEntryType.Information);
+    }
+
     /// <summary>
     /// Joue un fichier audio en boucle.
     /// </summary>
@@ -91,6 +107,7 @@ public class NAudioClass : IAudioPlayer
     public void Dispose()
     {
         Dispose(true);
+        deviceWatcher.Dispose();
         GC.SuppressFinalize(this);
     }
 

@@ -18,16 +18,24 @@ namespace OOBEMusicSetup
 {
     public partial class Form1 : Form
     {
-        static string WWAHostKeyName = "ActivateWWAHostMusic";
-        static string FirstLogonAnimKeyName = "ActivateFirstLogonMusic";
-        static string OOBEHostAppKeyName = "ActivateOOBEHostMusic";
-        static string SuperVerboseLogsKeyName = "EnableSuperVerboseLogs";
 
-        int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
-        int FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
-        int OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
+        private Dictionary<string, int> LoadProcesses()
+        {
+            var dynamicProcesses = new Dictionary<string, int>();
+
+            // Exemple : Charger les données depuis le registre
+            var keys = new List<string> { "ActivateWWAHostMusic", "ActivateOOBEHostMusic", "ActivateFirstLogonMusic", "ActivateWinDeployMusic" };
+            foreach (var key in keys)
+            {
+                int state = RegHelper.CheckActivationState(key);
+                dynamicProcesses[key] = state;
+            }
+
+            return dynamicProcesses;
+        }
+
         int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Sleep time for the thread in milliseconds
-        int SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName);
+        int SuperVerboseLogs = RegHelper.CheckActivationState("EnableSuperVerboseLogs" , 0);
 
         string musicPath = RegHelper.GetValue("MusicFile").Replace("\"", string.Empty);
 
@@ -38,11 +46,15 @@ namespace OOBEMusicSetup
         public Form1()
         {
             InitializeComponent();
+
+            Dictionary<string, int> processes = LoadProcesses();
+
             // Set the initial state of the checkboxes based on the registry values
-            WWAHostCheck.Checked = WWAHostState == 1;
-            firstLogonCheck.Checked = FirstLogonAnimState == 1;
-            OOBEHostAppCheck.Checked = OOBEShellState == 1;
-            superVerboseCheck.Checked = SuperVerboseLogs == 0;
+            WWAHostCheck.Checked = processes["ActivateWWAHostMusic"] == 1;
+            firstLogonCheck.Checked = processes["ActivateFirstLogonMusic"] == 1;
+            OOBEHostAppCheck.Checked = processes["ActivateOOBEHostMusic"] == 1;
+            windeployCheckbox.Checked = processes["ActivateWinDeployMusic"] == 1;
+            superVerboseCheck.Checked = SuperVerboseLogs == 1;
 
             // Check if the thread timeout value is less than 100ms
             if (ThreadTimeout < 100)
@@ -125,13 +137,11 @@ namespace OOBEMusicSetup
         {
             if (WWAHostCheck.Checked)
             {
-                RegHelper.WriteKey(WWAHostKeyName, 1);
-                WWAHostState = 1;
+                RegHelper.WriteKey("ActivateWWAHostMusic", 1);
             }
             else
             {
-                RegHelper.WriteKey(WWAHostKeyName, 0);
-                WWAHostState = 0;
+                RegHelper.WriteKey("ActivateWWAHostMusic", 0);
             }
         }
 
@@ -139,13 +149,11 @@ namespace OOBEMusicSetup
         {
             if (firstLogonCheck.Checked)
             {
-                RegHelper.WriteKey(FirstLogonAnimKeyName, 1);
-                FirstLogonAnimState = 1;
+                RegHelper.WriteKey("ActivateFirstLogonMusic", 1);
             }
             else
             {
-                RegHelper.WriteKey(FirstLogonAnimKeyName, 0);
-                FirstLogonAnimState = 0;
+                RegHelper.WriteKey("ActivateFirstLogonMusic", 0);
             }
         }
 
@@ -153,13 +161,11 @@ namespace OOBEMusicSetup
         {
             if (OOBEHostAppCheck.Checked)
             {
-                RegHelper.WriteKey(OOBEHostAppKeyName, 1);
-                OOBEShellState = 1;
+                RegHelper.WriteKey("ActivateOOBEHostMusic", 1);
             }
             else
             {
-                RegHelper.WriteKey(OOBEHostAppKeyName, 0);
-                OOBEShellState = 0;
+                RegHelper.WriteKey("ActivateOOBEHostMusic", 0);
             }
         }
 
@@ -168,14 +174,11 @@ namespace OOBEMusicSetup
             if (superVerboseCheck.Checked)
             {
                 // Set the registry key to enable super verbose logs
-                RegHelper.WriteKey(SuperVerboseLogsKeyName, 1);
-                SuperVerboseLogs = 1;
-
+                RegHelper.WriteKey("EnableSuperVerboseLogs", 1);
             }
             else
             {
-                RegHelper.WriteKey(SuperVerboseLogsKeyName, 0);
-                SuperVerboseLogs = 0;
+                RegHelper.WriteKey("EnableSuperVerboseLogs", 0);
             }
         }
 
@@ -330,14 +333,15 @@ namespace OOBEMusicSetup
 
         private bool CheckIfEverythingDisabled()
         {
-
-            if (WWAHostState == 0 && OOBEShellState == 0 && FirstLogonAnimState == 0)
+            Dictionary<string, int> processesp = LoadProcesses();
+            foreach (var process in processesp)
             {
-                return true;
-            } else
-            {
-                return false;
+                if (process.Value == 1)
+                {
+                    return false; // At least one process is enabled
+                }
             }
+            return true; // All processes are disabled
         }
         
         //start service
@@ -413,15 +417,13 @@ namespace OOBEMusicSetup
                     RegHelper.ResetRegistryKeys();
                     // Reset the checkboxes to their default state
 
-                    WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
-                    FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
-                    OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
-                    SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName);
+                    Dictionary<string, int> processes = LoadProcesses();
+
                     ThreadTimeout = RegHelper.CheckThreadTimeout();
 
-                    WWAHostCheck.Checked = WWAHostState == 1;
-                    firstLogonCheck.Checked = FirstLogonAnimState == 1;
-                    OOBEHostAppCheck.Checked = OOBEShellState == 1;
+                    WWAHostCheck.Checked = processes["ActivateWWAHostMusic"] == 1;
+                    firstLogonCheck.Checked = processes["ActivateOOBEHostMusic"] == 1;
+                    OOBEHostAppCheck.Checked = processes["ActivateFirstLogonMusic"] == 1;
                     superVerboseCheck.Checked = SuperVerboseLogs == 0;
                     threadTimeoutNumber.Value = ThreadTimeout;
 
@@ -467,6 +469,19 @@ namespace OOBEMusicSetup
         private int ConvertToInt(bool value)
         {
             return value ? 1 : 0;
+        }
+
+        private void windeployCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (windeployCheckbox.Checked)
+            {
+                // Set the registry key to enable super verbose logs
+                RegHelper.WriteKey("ActivateWinDeployMusic", 1);
+            }
+            else
+            {
+                RegHelper.WriteKey("ActivateWinDeployMusic", 0);
+            }
         }
     }
 }

@@ -15,6 +15,24 @@ public class SoundPlayerClass : IAudioPlayer
     private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
     private SoundPlayer player;
 
+    private AudioDeviceWatcher deviceWatcher;
+
+    private string music = string.Empty;
+
+    public SoundPlayerClass()
+    {
+        deviceWatcher = new AudioDeviceWatcher();
+        deviceWatcher.DefaultAudioDeviceChanged += OnAudioDeviceChanged;
+    }
+
+    private void OnAudioDeviceChanged()
+    {
+        // Log the event of audio device change
+        player?.Stop();
+        player?.PlayLooping();
+        Logging.EventLogger.LogToEventViewer(rm.GetString("AudioDeviceChanged"), EventLogEntryType.Information);
+    }
+
     private bool disposed = false;
 
     /// <summary>
@@ -35,6 +53,8 @@ public class SoundPlayerClass : IAudioPlayer
 
         try
         {
+            // Vérifier si le fichier existe
+            music = musicPath;
             player = new SoundPlayer
             {
                 SoundLocation = musicPath
@@ -109,6 +129,7 @@ public class SoundPlayerClass : IAudioPlayer
     public void Dispose()
     {
         Dispose(true);
+        deviceWatcher.Dispose();
         GC.SuppressFinalize(this);
     }
 

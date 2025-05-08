@@ -1222,6 +1222,12 @@
         "Entry"
         {
         "MsmKey" = "8:_817A5AF2C9B22B3A98587BFDA2DA3FBA"
+        "OwnerKey" = "8:_D2796A25BFC1821EA5A4C5BF9EF97539"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_817A5AF2C9B22B3A98587BFDA2DA3FBA"
         "OwnerKey" = "8:_346D655F0B63423AB98900679EDB9E86"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3334,10 +3340,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.8"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    "Name" = "8:Microsoft .NET Framework 4.8 (x86 et x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.8"
                     }
                 }
             }
@@ -3361,7 +3367,7 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
+            "PrerequisitesLocation" = "2:2"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
@@ -3422,7 +3428,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.8"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
                 }
@@ -8871,7 +8877,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OOBE Music Player"
         "ProductCode" = "8:{7A5DD73B-3974-47F1-8758-24F8BEB1C6F3}"
-        "PackageCode" = "8:{ADAD535E-E29E-490D-95EC-E2BA644CB5CE}"
+        "PackageCode" = "8:{85F71260-8CA4-4168-9F65-6F9E8C2B9859}"
         "UpgradeCode" = "8:{1F2111F1-254E-4150-90F1-C02BBEC8ADD2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

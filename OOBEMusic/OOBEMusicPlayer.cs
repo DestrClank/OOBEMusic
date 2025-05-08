@@ -24,16 +24,9 @@ namespace OOBEMusic
         ProcessUtils processUtils = new ProcessUtils(); // Instance of ProcessUtils for process management
 
         private Thread _HookThread = null; // Thread for hooking into WWAHost process
-
-        static string WWAHostKeyName = "ActivateWWAHostMusic";
-        static string FirstLogonAnimKeyName = "ActivateFirstLogonMusic";
-        static string OOBEHostAppKeyName = "ActivateOOBEHostMusic";
-        static string SuperVerboseLogsKeyName = "EnableSuperVerboseLogs";
+   
         static int SuperVerboseLogs = 0;
 
-        static int WWAHostState = RegHelper.CheckActivationState(WWAHostKeyName);
-        static int FirstLogonAnimState = RegHelper.CheckActivationState(FirstLogonAnimKeyName);
-        static int OOBEShellState = RegHelper.CheckActivationState(OOBEHostAppKeyName);
         static int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Sleep time for the thread in milliseconds
 
         public OOBEMusicPlayer()
@@ -63,11 +56,10 @@ namespace OOBEMusic
 
         protected override void OnStart(string[] args)
         {
-            SuperVerboseLogs = RegHelper.CheckActivationState(SuperVerboseLogsKeyName, 0);
 
-            if (WWAHostState != 1 && FirstLogonAnimState != 1 && OOBEShellState != 1)
+            if (!processUtils.CheckIfAnyOptionIsEnabled())
             {
-                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), WWAHostKeyName, FirstLogonAnimKeyName, OOBEHostAppKeyName), EventLogEntryType.Information);
+                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), "ActivateWWAHostMusic", "ActivateFirstLogonMusic", "ActivateOOBEHostMusic"), EventLogEntryType.Information);
                 base.Stop();
             }
             else
@@ -104,7 +96,7 @@ namespace OOBEMusic
             {
                 while (!_stopRequested)
                 {
-                    var (processeslist, exists) = processUtils.CheckIfProcessExists(WWAHostState, FirstLogonAnimState, OOBEShellState);
+                    var (processeslist, exists) = processUtils.CheckIfProcessExists();
                     if (exists && !musicPlaying)
                     {
                         musicPath = RegHelper.GetValue("MusicFile").Replace("\"", string.Empty);
