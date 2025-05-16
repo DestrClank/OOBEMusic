@@ -35,6 +35,8 @@ namespace MusicPlaylistBuilder
             listView1.DragDrop += listView1_DragDrop;
             listView1.DoubleClick += ListView1_DoubleClick;
 
+            listView1.KeyDown += new KeyEventHandler(listView1_KeyDown); // Pour gérer la touche Suppr
+
             // Ajoutez cet événement dans le constructeur de Form1
             this.FormClosing += Form1_FormClosing;
 
@@ -585,7 +587,7 @@ namespace MusicPlaylistBuilder
 
                     musicItems = newMusicItems;
                     PopulateListView();
-                    MessageBox.Show("Playlist loaded successfully.", "Playlist Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Playlist loaded successfully.", "Playlist Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -659,6 +661,21 @@ namespace MusicPlaylistBuilder
             }
         }
 
+        // Fonction qui permet d'appuyer sur Suppr et de supprimer l'élément sélectionné
+        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // Récupérez les indices des éléments sélectionnés, triés dans l'ordre décroissant
+                var selectedIndices = listView1.SelectedIndices.Cast<int>().OrderByDescending(i => i).ToList();
+                // Supprimez chaque élément en utilisant son index
+                foreach (var index in selectedIndices)
+                {
+                    RemoveItemFromListView(index);
+                }
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             // C#
@@ -678,6 +695,11 @@ namespace MusicPlaylistBuilder
                 // L'utilisateur a peut-être refusé l'élévation
                 MessageBox.Show("The operation needs administrative privileges.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Process.Start("WWAHost.exe");
         }
     }
 }
