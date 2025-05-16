@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("OOBEMusicSetup")]
+[assembly: AssemblyTitle("OOBE Music Setup")]
 [assembly: AssemblyDescription("Control panel for the OOBE Background Music Player.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DestrClank Studios")]

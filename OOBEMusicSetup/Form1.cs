@@ -1,18 +1,12 @@
-﻿using System;
+﻿using OOBEMusic;
+using OOBEMusic.Utils;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using OOBEMusic;
-using OOBEMusic.Utils;
 
 namespace OOBEMusicSetup
 {
@@ -35,7 +29,7 @@ namespace OOBEMusicSetup
         }
 
         int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Sleep time for the thread in milliseconds
-        int SuperVerboseLogs = RegHelper.CheckActivationState("EnableSuperVerboseLogs" , 0);
+        int SuperVerboseLogs = RegHelper.CheckActivationState("EnableSuperVerboseLogs", 0);
 
         string musicPath = RegHelper.GetValue("MusicFile").Replace("\"", string.Empty);
 
@@ -186,8 +180,8 @@ namespace OOBEMusicSetup
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Audio files|*.at9;*.brstm;*.wav;*.mp3|All files (*.*)|*.*";
-                openFileDialog.Title = "Select an audio file";
+                openFileDialog.Filter = "Audio files|*.at3;*.at9;*.brstm;*.wav;*.mp3|Playlist files|*.m3u;*.m3u8|All music files|*.*";
+                openFileDialog.Title = "Select an audio file or a playlist";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePathBox.Text = openFileDialog.FileName;
@@ -343,7 +337,7 @@ namespace OOBEMusicSetup
             }
             return true; // All processes are disabled
         }
-        
+
         //start service
         private void button2_Click(object sender, EventArgs e)
         {
@@ -387,7 +381,8 @@ namespace OOBEMusicSetup
                     serviceStatusLabel.Text = "Service is running";
                     serviceStatusLabel.ForeColor = Color.Green;
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error starting service : {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -404,7 +399,8 @@ namespace OOBEMusicSetup
             if (File.Exists("WWAHost.exe"))
             {
                 Process.Start("WWAHost.exe");
-            } else { MessageBox.Show("WWAHost.exe not found in the current directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
+            else { MessageBox.Show("WWAHost.exe not found in the current directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -482,6 +478,11 @@ namespace OOBEMusicSetup
             {
                 RegHelper.WriteKey("ActivateWinDeployMusic", 0);
             }
+        }
+
+        private void filePathBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

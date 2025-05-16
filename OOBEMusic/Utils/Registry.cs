@@ -1,8 +1,7 @@
-﻿using System;
-using System.Resources;
-using Microsoft.Win32;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
+using System.Resources;
 
 namespace OOBEMusic
 {

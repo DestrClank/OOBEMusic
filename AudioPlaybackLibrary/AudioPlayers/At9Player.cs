@@ -1,20 +1,19 @@
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Resources;
 using VGAudio.Containers.At9;
 using VGAudio.Containers.Wave;
-using System.Resources;
-using System.Diagnostics;
-using OOBEMusic;
 
 public class At9Player : IVGAudioPlayer
 {
     private FileStream at9Bytes;
     private MemoryStream memoryStream;
     private bool _disposed;
-    private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
+    private static readonly ResourceManager rm = new ResourceManager("AudioPlaybackLibrary.Ressources.Messages", typeof(At9Player).Assembly);
 
     /// <summary>
-    /// Ouvre un fichier AT9, le décode en PCM, et le convertit en WAV.
+    /// Opens an AT9 file, decodes it to PCM, and converts it to WAV.
     /// </summary>
     /// <param name="filePath"></param>
     /// <returns></returns>
@@ -24,48 +23,48 @@ public class At9Player : IVGAudioPlayer
     }
 
     /// <summary>
-    /// Ouvre un fichier AT9, le décode en PCM, et le convertit en WAV.
+    /// Opens an AT9 file, decodes it to PCM, and converts it to WAV.
     /// </summary>
-    /// <param name="at9FilePath">Chemin du fichier AT9 à ouvrir.</param>
-    /// <returns>Un MemoryStream contenant les données WAV.</returns>
+    /// <param name="at9FilePath">Path to the AT9 file to open.</param>
+    /// <returns>A MemoryStream containing the WAV data.</returns>
     public MemoryStream OpenAt9(string at9FilePath)
     {
         if (_disposed)
         {
-            throw new ObjectDisposedException(nameof(At9Player), rm.GetString("ObjectDisposedAt9Player"));
+            throw new ObjectDisposedException(nameof(At9Player), "The At9Player object has been disposed.");
         }
 
         if (!File.Exists(at9FilePath))
         {
-            throw new FileNotFoundException(rm.GetString("FileNotFoundAt9"), at9FilePath);
+            throw new FileNotFoundException("The specified AT9 file was not found.", at9FilePath);
         }
 
         try
         {
-            // Ouvrir le fichier AT9
+            // Open the AT9 file
             at9Bytes = new FileStream(at9FilePath, FileMode.Open, FileAccess.Read);
             var at9Reader = new At9Reader();
             var audioFormat = at9Reader.Read(at9Bytes);
 
-            // Convertir le format audio en WAV
+            // Convert the audio format to WAV
             var wavWriter = new WaveWriter();
             var wavBytes = wavWriter.GetFile(audioFormat);
 
-            // Créer un MemoryStream pour le WAV
+            // Create a MemoryStream for the WAV
             memoryStream = new MemoryStream(wavBytes);
 
             return memoryStream;
         }
         catch (Exception ex)
         {
-            // Libérer les ressources en cas d'erreur
+            // Release resources in case of error
             Dispose();
-            throw new Exception(string.Format(rm.GetString("ErrorOpeningAt9File"), ex.Message), ex);
+            throw new Exception($"An error occurred while opening the AT9 file: {ex.Message}", ex);
         }
     }
 
     /// <summary>
-    /// Libère les ressources utilisées par la classe.
+    /// Releases the resources used by the class.
     /// </summary>
     public void Dispose()
     {
@@ -74,16 +73,16 @@ public class At9Player : IVGAudioPlayer
     }
 
     /// <summary>
-    /// Implémentation de la méthode Dispose pour libérer les ressources.
+    /// Implementation of the Dispose method to release resources.
     /// </summary>
-    /// <param name="disposing">Indique si les ressources managées doivent être libérées.</param>
+    /// <param name="disposing">Indicates whether managed resources should be released.</param>
     protected virtual void Dispose(bool disposing)
     {
         if (!_disposed)
         {
             if (disposing)
             {
-                // Libérer les ressources managées
+                // Release managed resources
                 memoryStream?.Dispose();
                 memoryStream = null;
 
@@ -91,14 +90,14 @@ public class At9Player : IVGAudioPlayer
                 at9Bytes = null;
             }
 
-            // Libérer les ressources non managées si nécessaire (aucune ici)
+            // Release unmanaged resources if necessary (none here)
             _disposed = true;
-            Logging.EventLogger.LogToEventViewer(rm.GetString("At9PlayerResourceReleased"), EventLogEntryType.Information);
+            Logging.EventLogger.LogToEventViewer("At9Player resources have been released.", EventLogEntryType.Information);
         }
     }
 
     /// <summary>
-    /// Finaliseur pour garantir la libération des ressources non managées.
+    /// Finalizer to ensure the release of unmanaged resources.
     /// </summary>
     ~At9Player()
     {

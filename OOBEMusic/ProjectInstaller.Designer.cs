@@ -2,6 +2,8 @@
 using System.Configuration.Install;
 using System.ServiceProcess;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace OOBEMusic
 {
@@ -47,7 +49,30 @@ namespace OOBEMusic
                     Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStartError"), ex.Message), EventLogEntryType.Error);
                 }
             }
-        }
 
+            // --- Ajout du dossier d'installation dans le PATH système ---
+            try
+            {
+                // Récupère le dossier d'installation (chemin du service installé)
+                string installDir = Context.Parameters.ContainsKey("targetdir")
+                    ? Context.Parameters["targetdir"]
+                    : AppDomain.CurrentDomain.BaseDirectory;
+                installDir = installDir.TrimEnd(Path.DirectorySeparatorChar);
+
+                // Récupère la variable PATH système
+                string path = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine);
+                if (!path.Split(';').Contains(installDir, StringComparer.OrdinalIgnoreCase))
+                {
+                    string newPath = path + ";" + installDir;
+                    Environment.SetEnvironmentVariable("PATH", newPath, EnvironmentVariableTarget.Machine);
+                }
+                NotifyEnvironmentChanged();
+            }
+            catch (Exception ex)
+            {
+                Logging.EventLogger.LogToEventViewer("Erreur lors de l'ajout du dossier d'installation au PATH : " + ex.Message, EventLogEntryType.Error);
+            }
+
+        }
     }
 }

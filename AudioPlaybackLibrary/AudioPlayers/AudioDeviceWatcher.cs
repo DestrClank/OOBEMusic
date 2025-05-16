@@ -1,11 +1,11 @@
-using System;
-using System.Runtime.InteropServices;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
+using System;
 
 public class AudioDeviceWatcher : IMMNotificationClient
 {
     private readonly MMDeviceEnumerator deviceEnumerator;
+    private bool disposed = false;
 
     public event Action DefaultAudioDeviceChanged;
 
@@ -30,6 +30,9 @@ public class AudioDeviceWatcher : IMMNotificationClient
 
     public void Dispose()
     {
+        if (disposed)
+            return;
         deviceEnumerator.UnregisterEndpointNotificationCallback(this);
+        disposed = true;
     }
 }

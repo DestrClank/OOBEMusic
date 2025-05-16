@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using OOBEMusic.Utils;
+using System;
 using System.Diagnostics;
+using System.Resources;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using System.Resources;
-using System.IO;
-using OOBEMusic.Utils;
+using AudioPlaybackLibrary;
 
 namespace OOBEMusic
 {
@@ -18,22 +18,25 @@ namespace OOBEMusic
 
         public bool _stopRequested = false;
 
-        // Audio API enum
-        IAudioPlayer player;
+        private AudioPlayer audioPlayer = new AudioPlayer(); // Instance de la classe AudioPlayer
 
-        ProcessUtils processUtils = new ProcessUtils(); // Instance of ProcessUtils for process management
+        private bool enableConsoleWrite = false;
 
-        private Thread _HookThread = null; // Thread for hooking into WWAHost process
-   
+        ProcessUtils processUtils = new ProcessUtils(); // Instance de ProcessUtils pour la gestion des processus
+
+        private Thread _HookThread = null; // Thread pour surveiller le processus WWAHost
+
         static int SuperVerboseLogs = 0;
 
-        static int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Sleep time for the thread in milliseconds
+        static int ThreadTimeout = RegHelper.CheckThreadTimeout(); // Temps de pause pour le thread en millisecondes
 
         public OOBEMusicPlayer()
         {
             this.ServiceName = servicename;
 
             InitializeComponent();
+
+            // Initialiser l'instance de AudioPlayer
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -51,15 +54,18 @@ namespace OOBEMusic
         public void RunAsConsole()
         {
             Console.WriteLine(rm.GetString("CannotRunInConsoleMode"));
+            enableConsoleWrite = true;
             Logging.EventLogger.LogToEventViewer(rm.GetString("CannotRunInConsoleMode"), EventLogEntryType.Error);
         }
 
         protected override void OnStart(string[] args)
         {
-
             if (!processUtils.CheckIfAnyOptionIsEnabled())
             {
-                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), "ActivateWWAHostMusic", "ActivateFirstLogonMusic", "ActivateOOBEHostMusic"), EventLogEntryType.Information);
+                string message = string.Format(rm.GetString("ServiceStoppedBothKeysInactive"), "ActivateWWAHostMusic", "ActivateFirstLogonMusic", "ActivateOOBEHostMusic");
+                Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+                if (enableConsoleWrite)
+                    Console.WriteLine(message);
                 base.Stop();
             }
             else
@@ -75,15 +81,18 @@ namespace OOBEMusic
 
             if (SuperVerboseLogs == 1)
             {
-                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStartedVerbose"), EventLogEntryType.Information);
+                string message = rm.GetString("ServiceStartedVerbose");
+                Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+                if (enableConsoleWrite)
+                    Console.WriteLine(message);
             }
             else
             {
-                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStarted"), EventLogEntryType.Information);
+                string message = rm.GetString("ServiceStarted");
+                Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+                if (enableConsoleWrite)
+                    Console.WriteLine(message);
             }
-
-            // Logique pour démarrer le service
-
         }
 
         private void HookIntoWWA()
@@ -104,15 +113,20 @@ namespace OOBEMusic
 
                         try
                         {
-                            PlayAudioFile(musicPath);
+                            audioPlayer.PlayInLoop(musicPath);
                             processLogsStrings = processUtils.ParseProcesses(processeslist);
 
-                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicPlayed"), processLogsStrings, musicPath), EventLogEntryType.Information);
-                            
+                            string message = string.Format(rm.GetString("MusicPlayed"), processLogsStrings, musicPath);
+                            Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+                            if (enableConsoleWrite)
+                                Console.WriteLine(message);
                         }
                         catch (Exception ex)
                         {
-                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicCrash"), ex.Message), EventLogEntryType.Error);
+                            string message = string.Format(rm.GetString("MusicCrash"), ex.Message);
+                            Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Error);
+                            if (enableConsoleWrite)
+                                Console.WriteLine(message);
                         }
                     }
                     else if (!exists && musicPlaying)
@@ -121,14 +135,18 @@ namespace OOBEMusic
 
                         DisposeAudioPlayers();
 
+                        string message;
                         if (SuperVerboseLogs == 1)
                         {
-                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings), EventLogEntryType.Information);
+                            message = string.Format(rm.GetString("MusicStoppedVerbose"), processLogsStrings);
                         }
                         else
                         {
-                            Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("MusicStopped"), processLogsStrings), EventLogEntryType.Information);
+                            message = string.Format(rm.GetString("MusicStopped"), processLogsStrings);
                         }
+                        Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+                        if (enableConsoleWrite)
+                            Console.WriteLine(message);
                     }
 
                     Thread.Sleep(ThreadTimeout);
@@ -136,8 +154,10 @@ namespace OOBEMusic
             }
             catch (Exception ex)
             {
-                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("CriticalErrorInHookIntoWWA"), ex.Message), EventLogEntryType.Error);
-
+                string message = string.Format(rm.GetString("CriticalErrorInHookIntoWWA"), ex.Message);
+                Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Error);
+                if (enableConsoleWrite)
+                    Console.WriteLine(message);
             }
             finally
             {
@@ -149,78 +169,14 @@ namespace OOBEMusic
         {
             try
             {
-                player?.Dispose();
+                audioPlayer.Stop();
             }
             catch (Exception ex)
             {
-                Logging.EventLogger.LogToEventViewer(string.Format(rm.GetString("ErrorReleasingAudioResources"), ex.Message), EventLogEntryType.Error);
-            }
-        }
-
-        private void PlayAudioFile(string musicPath)
-        {
-            string extension = Path.GetExtension(musicPath).ToLowerInvariant();
-
-            // Déterminer l'API audio en fonction de l'extension
-            switch (extension)
-            {
-                case ".wav":
-                    player = new SoundPlayerClass();
-                    player.PlaySound(musicPath);
-                    break;
-
-                case ".brstm":
-                    using (var brstmPlayer = new BrstmPlayer())
-                    {
-                        using (var memoryStream = brstmPlayer.OpenBrstm(musicPath))
-                        {
-                            player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream);
-                        }
-                    }
-                    break;
-
-                case ".at9":
-                    using (var at9Player = new At9Player())
-                    {
-                        using (var memoryStream = at9Player.OpenAt9(musicPath))
-                        {
-                            player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream);
-                        }
-                    }
-                    break;
-
-                case ".mp3":
-                    player = new NAudioClass();
-                    player.PlaySound(musicPath);
-                    break;
-
-                case ".at3":
-                    using (var vgmPlayer = new VGMStreamPlayer())
-                    {
-                        using (var memoryStream = vgmPlayer.Open(musicPath))
-                        {
-                            player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream);
-                        }
-                    }
-                    break;
-
-                default:
-                    // Par défaut, utiliser NAudio pour les formats non pris en charge
-
-                    using (var vgmPlayer = new VGMStreamPlayer())
-                    {
-                        using (var memoryStream = vgmPlayer.Open(musicPath))
-                        {
-                            player = new SoundPlayerClass();
-                            player.PlaySound(memoryStream);
-                        }
-                    }
-                    break;
-
-     
+                string message = string.Format(rm.GetString("ErrorReleasingAudioResources"), ex.Message);
+                Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Error);
+                if (enableConsoleWrite)
+                    Console.WriteLine(message);
             }
         }
 
@@ -228,14 +184,18 @@ namespace OOBEMusic
         {
             _stopRequested = true;
 
+            string message;
             if (SuperVerboseLogs == 1)
             {
-                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequestVerbose"), EventLogEntryType.Information);
+                message = rm.GetString("ServiceStopRequestVerbose");
             }
             else
             {
-                Logging.EventLogger.LogToEventViewer(rm.GetString("ServiceStopRequest"), EventLogEntryType.Information);
+                message = rm.GetString("ServiceStopRequest");
             }
+            Logging.EventLogger.LogToEventViewer(message, EventLogEntryType.Information);
+            if (enableConsoleWrite)
+                Console.WriteLine(message);
 
             if (_HookThread != null && _HookThread.IsAlive)
             {

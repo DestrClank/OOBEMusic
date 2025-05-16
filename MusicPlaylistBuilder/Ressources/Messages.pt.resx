@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="KeyNotFoundMessage" xml:space="preserve">
+    <value>A chave não existe, criando-a.</value>
+  </data>
+  <data name="RegistryCreatedMessage" xml:space="preserve">
+    <value>A chave do registro foi criada.</value>
+  </data>
+  <data name="RegistryCreationError" xml:space="preserve">
+    <value>Ocorreu um erro ao criar a chave do registro. Código de erro: {0}</value>
+  </data>
+  <data name="KeyAlreadyExistsMessage" xml:space="preserve">
+    <value>A chave já existe (localização do arquivo de música): {0}</value>
+  </data>
+  <data name="KeyNotFoundForActivation" xml:space="preserve">
+    <value>A chave não existe, não é possível verificar o estado de ativação, o programa será ativado por padrão.</value>
+  </data>
+  <data name="ValueNotFoundDefaultActivation" xml:space="preserve">
+    <value>O valor {0} não existe, o programa será ativado por padrão.</value>
+  </data>
+  <data name="ValueNotFound" xml:space="preserve">
+    <value>O valor {0} não existe.</value>
+  </data>
+  <data name="ValueTypeError" xml:space="preserve">
+    <value>O tipo do valor {0} não é conversível para Inteiro. Código de erro: {1}</value>
+  </data>
+  <data name="ActivationState" xml:space="preserve">
+    <value>Estado de ativação ({0}): {1}</value>
+  </data>
+  <data name="ServiceStoppedBothKeysInactive" xml:space="preserve">
+    <value>Ambos os valores {0}, {1} e {2} não estão definidos como 1. O programa será encerrado.</value>
+  </data>
+  <data name="ServiceStartedVerbose" xml:space="preserve">
+    <value>uiiiii funciona Em linguagem séria: O serviço OOBEMusic.exe foi iniciado com sucesso.</value>
+  </data>
+  <data name="ServiceStarted" xml:space="preserve">
+    <value>O serviço OOBEMusic.exe foi iniciado com sucesso.</value>
+  </data>
+  <data name="MusicPlayedVerbose" xml:space="preserve">
+    <value>A música foi reproduzida, normalmente OnO. Em linguagem séria: O processo {0} foi detectado e o programa está reproduzindo a música. Localização do arquivo: {1}</value>
+  </data>
+  <data name="MusicPlayed" xml:space="preserve">
+    <value>O processo {0} foi detectado e o programa está reproduzindo a música. Localização do arquivo: {1}</value>
+  </data>
+  <data name="MusicStoppedVerbose" xml:space="preserve">
+    <value>A música foi interrompida, normalmente está parada. Em linguagem séria: O processo {0} foi encerrado, a música será interrompida.</value>
+  </data>
+  <data name="MusicStopped" xml:space="preserve">
+    <value>O processo {0} foi encerrado, a música será interrompida.</value>
+  </data>
+  <data name="MusicErrorVerbose" xml:space="preserve">
+    <value>naaaahhhh não funciona mais: {0} Em linguagem séria: Ocorreu um erro no aplicativo que impede a reprodução da música. Verifique se o arquivo é um arquivo .wav e se a localização especificada no registro do Windows na chave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile aponta para uma localização de arquivo válida e se o arquivo existe e está acessível. Código de erro: {0}</value>
+  </data>
+  <data name="MusicError" xml:space="preserve">
+    <value>Ocorreu um erro no aplicativo que impede a reprodução da música. Verifique se o arquivo é um arquivo .wav e se a localização especificada no registro do Windows na chave HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\DestrClank\OOBEMusic\MusicFile aponta para uma localização de arquivo válida e se o arquivo existe e está acessível. Código de erro: {0}</value>
+  </data>
+  <data name="ServiceStopRequestVerbose" xml:space="preserve">
+    <value>Não: Em linguagem séria: O processo recebeu uma solicitação de parada do sistema. O processo será encerrado.</value>
+  </data>
+  <data name="ServiceStopRequest" xml:space="preserve">
+    <value>O processo recebeu uma solicitação de parada do sistema. O processo será encerrado.</value>
+  </data>
+  <data name="ErrorCantLogInEventViewer" xml:space="preserve">
+    <value>Não é possível registrar no visualizador de eventos devido a um erro. Código de erro: {0}</value>
+  </data>
+  <data name="ServiceDescription" xml:space="preserve">
+    <value>Reproduz música durante a experiência OOBE.</value>
+  </data>
+  <data name="ServiceUninstallError" xml:space="preserve">
+    <value>O serviço não foi desinstalado corretamente. Código de erro: {0}</value>
+  </data>
+  <data name="ServiceStartError" xml:space="preserve">
+    <value>O serviço não foi iniciado corretamente após a instalação: Código de erro {0}</value>
+  </data>
+  <data name="ServiceStartedUponInstall" xml:space="preserve">
+    <value>O serviço foi instalado e iniciado com sucesso.</value>
+  </data>
+  <data name="ServiceOperationError" xml:space="preserve">
+    <value>Erro de operação: {0}</value>
+  </data>
+  <data name="ServiceTimeoutError" xml:space="preserve">
+    <value>O serviço não foi iniciado no tempo previsto: {0}</value>
+  </data>
+  <data name="ServiceUnexpectedError" xml:space="preserve">
+    <value>Erro inesperado: {0}</value>
+  </data>
+  <data name="KeyNotFoundForThreadTimeout" xml:space="preserve">
+    <value>A chave de registro para o tempo limite do thread não foi encontrada. Usando o valor padrão.</value>
+  </data>
+  <data name="ValueNotFoundDefaultThreadTimeout" xml:space="preserve">
+    <value>O valor para o tempo limite do thread não foi encontrado. Usando o valor padrão: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutTooLow" xml:space="preserve">
+    <value>O valor do tempo limite do thread é muito baixo. Ajustado para o valor mínimo permitido: {0} ms.</value>
+  </data>
+  <data name="ThreadTimeoutValue" xml:space="preserve">
+    <value>O valor do tempo limite do thread está definido como: {0} ms.</value>
+  </data>
+  <data name="KeyNotFoundForMusicFile" xml:space="preserve">
+    <value>A chave de registro para o arquivo de música não foi encontrada. Usando o caminho padrão.</value>
+  </data>
+  <data name="RegistryKeyCreatedMessage" xml:space="preserve">
+    <value>A chave de registro 'MusicFile' foi criada com sucesso.</value>
+  </data>
+  <data name="RegistryKeyCreationError" xml:space="preserve">
+    <value>Ocorreu um erro ao criar a chave de registro 'MusicFile'. Erro: {0}</value>
+  </data>
+  <data name="MusicCrash" xml:space="preserve">
+    <value>Um erro está impedindo a reprodução do arquivo de música. Código do erro: {0}</value>
+  </data>
+  <data name="FileDoesntExist" xml:space="preserve">
+    <value>O arquivo especificado não existe.</value>
+  </data>
+  <data name="CriticalErrorInHookIntoWWA" xml:space="preserve">
+    <value>Erro crítico em HookIntoWWA: {0}</value>
+  </data>
+  <data name="ErrorReleasingAudioResources" xml:space="preserve">
+    <value>Erro ao liberar recursos de áudio: {0}</value>
+  </data>
+  <data name="ObjectDisposedAt9Player" xml:space="preserve">
+    <value>O objeto At9Player já foi descartado.</value>
+  </data>
+  <data name="FileNotFoundAt9" xml:space="preserve">
+    <value>O arquivo AT9 especificado não foi encontrado.</value>
+  </data>
+  <data name="ErrorOpeningAt9File" xml:space="preserve">
+    <value>Erro ao abrir o arquivo AT9: {0}</value>
+  </data>
+  <data name="ObjectDisposedSoundPlayer" xml:space="preserve">
+    <value>O objeto SoundPlayerClass já foi descartado.</value>
+  </data>
+  <data name="AudioPathNullOrEmpty" xml:space="preserve">
+    <value>O caminho do arquivo de áudio não pode estar vazio ou nulo.</value>
+  </data>
+  <data name="MemoryStreamNull" xml:space="preserve">
+    <value>O fluxo de memória não pode ser nulo.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlayback" xml:space="preserve">
+    <value>Erro ao parar a reprodução de áudio: {0}</value>
+  </data>
+  <data name="SoundPlayerResourceReleased" xml:space="preserve">
+    <value>O recurso 'SoundPlayer' foi liberado.</value>
+  </data>
+  <data name="ObjectDisposedNAudio" xml:space="preserve">
+    <value>O objeto NAudioClass já foi descartado.</value>
+  </data>
+  <data name="ErrorStoppingAudioPlaybackNAudio" xml:space="preserve">
+    <value>Erro ao parar a reprodução de áudio: {0}</value>
+  </data>
+  <data name="OutputDeviceResourceReleased" xml:space="preserve">
+    <value>O recurso 'outputDevice' foi liberado.</value>
+  </data>
+  <data name="AudioFileResourceReleased" xml:space="preserve">
+    <value>O recurso 'audioFile' foi liberado.</value>
+  </data>
+  <data name="ObjectDisposedBrstmPlayer" xml:space="preserve">
+    <value>O objeto BrstmPlayer já foi descartado.</value>
+  </data>
+  <data name="FileNotFoundBrstm" xml:space="preserve">
+    <value>O arquivo BRSTM especificado não foi encontrado.</value>
+  </data>
+  <data name="ErrorOpeningBrstmFile" xml:space="preserve">
+    <value>Erro ao abrir o arquivo BRSTM: {0}</value>
+  </data>
+  <data name="BrstmPlayerResourceReleased" xml:space="preserve">
+    <value>O recurso 'BrstmPlayer' foi liberado.</value>
+  </data>
+  <data name="At9PlayerResourceReleased" xml:space="preserve">
+    <value>O recurso 'At9Player' foi liberado.</value>
+  </data>
+  <data name="NAudioResourceReleased" xml:space="preserve">
+    <value>O recurso 'NAudio' foi liberado.</value>
+  </data>
+  <data name="ServiceInteractiveDebugMode" xml:space="preserve">
+    <value>Serviço em execução no modo interativo de depuração.</value>
+  </data>
+  <data name="CannotRunInConsoleMode" xml:space="preserve">
+    <value>OOBEMusic.exe não pode ser executado no modo console.</value>
+  </data>
+</root>

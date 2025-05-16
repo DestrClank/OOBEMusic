@@ -1,17 +1,14 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using VGAudio.Containers.NintendoWare;
 using VGAudio.Containers.Wave;
-using System.Resources;
-using System.Diagnostics;
-using OOBEMusic;
 
 public class BrstmPlayer : IVGAudioPlayer
 {
     private FileStream brstmBytes;
     private MemoryStream memoryStream;
     private bool disposed = false;
-    private static readonly ResourceManager rm = new ResourceManager("OOBEMusic.Ressources.Messages", typeof(OOBEMusicPlayer).Assembly);
 
     /// <summary>
     /// Ouvre un fichier BRSTM, le décode en PCM, et le convertit en WAV.
@@ -32,12 +29,12 @@ public class BrstmPlayer : IVGAudioPlayer
     {
         if (disposed)
         {
-            throw new ObjectDisposedException(nameof(BrstmPlayer), rm.GetString("ObjectDisposedBrstmPlayer"));
+            throw new ObjectDisposedException(nameof(BrstmPlayer), "The BrstmPlayer object has been disposed.");
         }
 
         if (!File.Exists(brstmFilePath))
         {
-            throw new FileNotFoundException(rm.GetString("FileNotFoundBrstm"), brstmFilePath);
+            throw new FileNotFoundException("The specified BRSTM file was not found.", brstmFilePath);
         }
 
         try
@@ -60,7 +57,7 @@ public class BrstmPlayer : IVGAudioPlayer
         {
             // Libérer les ressources en cas d'erreur
             Dispose();
-            throw new Exception(string.Format(rm.GetString("ErrorOpeningBrstmFile"), ex.Message), ex);
+            throw new Exception($"An error occurred while opening the BRSTM file: {ex.Message}", ex);
         }
     }
 
@@ -93,7 +90,7 @@ public class BrstmPlayer : IVGAudioPlayer
 
             // Libérer les ressources non managées si nécessaire (aucune ici)
             disposed = true;
-            Logging.EventLogger.LogToEventViewer(rm.GetString("BrstmPlayerResourceReleased"), EventLogEntryType.Information);
+            Logging.EventLogger.LogToEventViewer("BrstmPlayer resources have been released.", EventLogEntryType.Information);
         }
     }
 

@@ -36,6 +36,7 @@ namespace OOBEMusicSetup
             this.fileSelectButton = new System.Windows.Forms.Button();
             this.filePathBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.windeployCheckbox = new System.Windows.Forms.CheckBox();
             this.superVerboseCheck = new System.Windows.Forms.CheckBox();
             this.OOBEHostAppCheck = new System.Windows.Forms.CheckBox();
             this.WWAHostCheck = new System.Windows.Forms.CheckBox();
@@ -54,7 +55,6 @@ namespace OOBEMusicSetup
             this.disableServiceButton = new System.Windows.Forms.Button();
             this.stopServiceButton = new System.Windows.Forms.Button();
             this.restartServiceButton = new System.Windows.Forms.Button();
-            this.windeployCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -81,10 +81,10 @@ namespace OOBEMusicSetup
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 13);
+            this.label1.Size = new System.Drawing.Size(595, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Select a music file here, supported : .mp3, .wav, .brstm, .at9 or any file suppor" +
-    "ted by vgmstream.";
+    "ted by vgmstream or a playlist file (.m3u, .m3u8).";
             // 
             // fileSelectButton
             // 
@@ -106,6 +106,7 @@ namespace OOBEMusicSetup
             this.filePathBox.ReadOnly = true;
             this.filePathBox.Size = new System.Drawing.Size(543, 20);
             this.filePathBox.TabIndex = 0;
+            this.filePathBox.TextChanged += new System.EventHandler(this.filePathBox_TextChanged);
             // 
             // groupBox2
             // 
@@ -122,6 +123,17 @@ namespace OOBEMusicSetup
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Music Playback";
+            // 
+            // windeployCheckbox
+            // 
+            this.windeployCheckbox.AutoSize = true;
+            this.windeployCheckbox.Location = new System.Drawing.Point(10, 113);
+            this.windeployCheckbox.Name = "windeployCheckbox";
+            this.windeployCheckbox.Size = new System.Drawing.Size(269, 17);
+            this.windeployCheckbox.TabIndex = 4;
+            this.windeployCheckbox.Text = "Enable playback when \"windeploy.exe\" is detected";
+            this.windeployCheckbox.UseVisualStyleBackColor = true;
+            this.windeployCheckbox.CheckedChanged += new System.EventHandler(this.windeployCheckbox_CheckedChanged);
             // 
             // superVerboseCheck
             // 
@@ -334,17 +346,6 @@ namespace OOBEMusicSetup
             this.restartServiceButton.Text = "Restart Service";
             this.restartServiceButton.UseVisualStyleBackColor = true;
             this.restartServiceButton.Click += new System.EventHandler(this.restartServiceButton_Click);
-            // 
-            // windeployCheckbox
-            // 
-            this.windeployCheckbox.AutoSize = true;
-            this.windeployCheckbox.Location = new System.Drawing.Point(10, 113);
-            this.windeployCheckbox.Name = "windeployCheckbox";
-            this.windeployCheckbox.Size = new System.Drawing.Size(269, 17);
-            this.windeployCheckbox.TabIndex = 4;
-            this.windeployCheckbox.Text = "Enable playback when \"windeploy.exe\" is detected";
-            this.windeployCheckbox.UseVisualStyleBackColor = true;
-            this.windeployCheckbox.CheckedChanged += new System.EventHandler(this.windeployCheckbox_CheckedChanged);
             // 
             // Form1
             // 

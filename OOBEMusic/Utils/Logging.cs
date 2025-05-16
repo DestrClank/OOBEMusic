@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using OOBEMusic;
+﻿using OOBEMusic;
 using System.Diagnostics;
 using System.Resources;
 
