@@ -681,7 +681,7 @@ namespace MusicPlaylistBuilder
             // C#
             var startInfo = new ProcessStartInfo
             {
-                FileName = "OOBEMusicSetup.exe",
+                FileName = "OOBEMusicSettings.exe",
                 UseShellExecute = true, // Obligatoire pour l'élévation
                 Verb = "runas" // Demande l'élévation
             };
