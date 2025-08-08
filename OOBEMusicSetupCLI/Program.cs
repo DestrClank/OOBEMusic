@@ -189,6 +189,7 @@ namespace OOBEMusicSetupCLI
                         Console.WriteLine("/testapp : Launch WWAHost.exe for testing.");
                         Console.WriteLine("/reset : Reset registry keys to default values.");
                         Console.WriteLine("/event-viewer : Open Event Viewer.");
+                        Console.WriteLine("/hello : Display a friendly greeting message.");
                         Console.WriteLine("/all-help : Show all help options.");
                         return;
                     case "/version":
@@ -199,11 +200,17 @@ namespace OOBEMusicSetupCLI
                         Console.WriteLine("Version 1.0.5");
                         Console.WriteLine("Developed by DestrClank Studios.");
                         return;
+                    case "/hello":
+                        Console.WriteLine("Hello! Welcome to OOBEMusic Setup CLI.");
+                        Console.WriteLine("This tool helps you configure the OOBE Music Player service.");
+                        Console.WriteLine("Use /help to see available commands.");
+                        return;
                     case "/all-help":
                         Console.WriteLine("All help options:");
                         Console.WriteLine("/help : Show this help message.");
                         Console.WriteLine("/version : Show the version of the application.");
                         Console.WriteLine("/about : Show information about the application.");
+                        Console.WriteLine("/hello : Display a friendly greeting message.");
                         Console.WriteLine("/taskmgr : Open Task Manager.");
                         Console.WriteLine("/services : Open Services.");
                         Console.WriteLine("/regedit : Open Registry Editor.");
